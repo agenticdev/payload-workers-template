@@ -38,10 +38,10 @@ export default async function HomePage() {
             rel="noopener noreferrer"
             target="_blank"
           >
-            Login as an admin
+            Admin dashboard
           </a>
           <a className="docs" href="/login" rel="noopener noreferrer" target="_blank">
-            Login as a user
+            User login
           </a>
         </div>
       </div>
