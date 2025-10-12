@@ -31,10 +31,6 @@ export default async function HomePage() {
         </picture>
         {!user && <h1>Welcome to your new project.</h1>}
         {user && <h1>Welcome back, {user.email}</h1>}
-        <p className="text-orange-500 text-6xl font-bold">This is the home page</p>
-        <Button>
-          <Link href="/login">Login</Link>
-        </Button>
         <div className="links">
           <a
             className="admin"
@@ -42,15 +38,10 @@ export default async function HomePage() {
             rel="noopener noreferrer"
             target="_blank"
           >
-            Go to admin panel
+            Login as an admin
           </a>
-          <a
-            className="docs"
-            href="https://payloadcms.com/docs"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Documentation
+          <a className="docs" href="/login" rel="noopener noreferrer" target="_blank">
+            Login as a user
           </a>
         </div>
       </div>
