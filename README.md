@@ -109,10 +109,6 @@ Congratulations! Your Cloudflare Workers app is ready to go!
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## License
-
-[Add your license here]
-
 ## Support
 
 For issues and questions, please open an issue on the [GitHub repository](https://github.com/gunnarsaliev/payload-workers-template/issues).
