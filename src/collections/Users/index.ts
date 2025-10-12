@@ -7,6 +7,7 @@ import { adminOrSelf } from '@/access/adminOrSelf'
 import { checkRole } from '@/access/utilities'
 
 import { ensureFirstUserIsAdmin } from './hooks/ensureFirstUserIsAdmin'
+import { syncEditableToVisible } from './hooks/syncEditableToVisible'
 
 export const Users: CollectionConfig = {
   slug: 'users',
@@ -63,12 +64,12 @@ export const Users: CollectionConfig = {
       ],
     },
     {
-      name: 'visibleCollections',
+      name: 'editableCollections',
       type: 'select',
       hasMany: true,
       admin: {
-        description: 'Collections this user can view',
-        condition: (data) => data?.roles?.includes('editor') || data?.roles?.includes('viewer'),
+        description: 'Collections this editor can modify (only applies to editor role)',
+        condition: (data) => data?.roles?.includes('editor'),
       },
       access: {
         create: adminOnlyFieldAccess,
@@ -81,12 +82,17 @@ export const Users: CollectionConfig = {
       ],
     },
     {
-      name: 'editableCollections',
+      name: 'visibleCollections',
       type: 'select',
       hasMany: true,
       admin: {
-        description: 'Collections this editor can modify (only applies to editor role)',
-        condition: (data) => data?.roles?.includes('editor'),
+        description:
+          'Collections this user can view (editable collections are automatically included)',
+        condition: (data) => data?.roles?.includes('editor') || data?.roles?.includes('viewer'),
+        readOnly: false,
+      },
+      hooks: {
+        beforeChange: [syncEditableToVisible],
       },
       access: {
         create: adminOnlyFieldAccess,

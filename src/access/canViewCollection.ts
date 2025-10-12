@@ -5,7 +5,7 @@ import { checkRole } from '@/access/utilities'
 /**
  * Check if user can view a specific collection
  * - Admins can view all collections
- * - Editors can view collections in their visibleCollections
+ * - Editors can view collections in their visibleCollections OR editableCollections
  * - Viewers can view collections in their visibleCollections
  */
 export const canViewCollection = (collectionSlug: string): Access => {
@@ -17,8 +17,15 @@ export const canViewCollection = (collectionSlug: string): Access => {
       return true
     }
 
-    // Editors and viewers can only view their assigned collections
-    if (checkRole(['editor', 'viewer'], user)) {
+    // Editors can view collections in their visibleCollections OR editableCollections
+    if (checkRole(['editor'], user)) {
+      const canView = user.visibleCollections?.includes(collectionSlug) || false
+      const canEdit = user.editableCollections?.includes(collectionSlug) || false
+      return canView || canEdit
+    }
+
+    // Viewers can only view their assigned collections
+    if (checkRole(['viewer'], user)) {
       return user.visibleCollections?.includes(collectionSlug) || false
     }
 
