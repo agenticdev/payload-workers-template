@@ -120,7 +120,15 @@ export interface UserAuthOperations {
 export interface User {
   id: number;
   name?: string | null;
-  roles?: ('admin' | 'customer')[] | null;
+  roles?: ('admin' | 'user' | 'editor' | 'viewer')[] | null;
+  /**
+   * Collections this user can view
+   */
+  visibleCollections?: ('users' | 'media')[] | null;
+  /**
+   * Collections this editor can modify (only applies to editor role)
+   */
+  editableCollections?: ('users' | 'media')[] | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -220,6 +228,8 @@ export interface PayloadMigration {
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
   roles?: T;
+  visibleCollections?: T;
+  editableCollections?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;

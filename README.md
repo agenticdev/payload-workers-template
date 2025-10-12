@@ -2,6 +2,16 @@
 
 A template for deploying Payload CMS on Cloudflare Workers with D1 database and R2 storage.
 
+## Features
+This template comes pre-configured with:
+
+- Granular Permissions - Fine-grained access control for collections and fields
+- Cloudflare D1 Integration - Serverless SQL database for your content
+- R2 Storage - Object storage for media and file uploads
+- Edge Deployment - Deploy globally on Cloudflare's edge network
+- TypeScript Support - Fully typed for better developer experience
+- Production Ready - Pre-configured with best practices and optimizations
+
 ## Prerequisites
 
 - [pnpm](https://pnpm.io/) installed

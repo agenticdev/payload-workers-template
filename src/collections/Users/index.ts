@@ -11,7 +11,7 @@ import { ensureFirstUserIsAdmin } from './hooks/ensureFirstUserIsAdmin'
 export const Users: CollectionConfig = {
   slug: 'users',
   access: {
-    admin: ({ req: { user } }) => checkRole(['admin'], user),
+    admin: ({ req: { user } }) => checkRole(['admin', 'editor', 'viewer'], user),
     create: publicAccess,
     delete: adminOnly,
     read: adminOrSelf,
@@ -38,20 +38,64 @@ export const Users: CollectionConfig = {
         read: adminOnlyFieldAccess,
         update: adminOnlyFieldAccess,
       },
-      defaultValue: ['customer'],
+      defaultValue: ['user'],
       hasMany: true,
       hooks: {
         beforeChange: [ensureFirstUserIsAdmin],
       },
       options: [
         {
-          label: 'admin',
+          label: 'Admin',
           value: 'admin',
         },
         {
-          label: 'customer',
-          value: 'customer',
+          label: 'User',
+          value: 'user',
         },
+        {
+          label: 'Editor',
+          value: 'editor',
+        },
+        {
+          label: 'Viewer',
+          value: 'viewer',
+        },
+      ],
+    },
+    {
+      name: 'visibleCollections',
+      type: 'select',
+      hasMany: true,
+      admin: {
+        description: 'Collections this user can view',
+        condition: (data) => data?.roles?.includes('editor') || data?.roles?.includes('viewer'),
+      },
+      access: {
+        create: adminOnlyFieldAccess,
+        update: adminOnlyFieldAccess,
+        read: adminOnlyFieldAccess,
+      },
+      options: [
+        { label: 'Users', value: 'users' },
+        { label: 'Media', value: 'media' },
+      ],
+    },
+    {
+      name: 'editableCollections',
+      type: 'select',
+      hasMany: true,
+      admin: {
+        description: 'Collections this editor can modify (only applies to editor role)',
+        condition: (data) => data?.roles?.includes('editor'),
+      },
+      access: {
+        create: adminOnlyFieldAccess,
+        update: adminOnlyFieldAccess,
+        read: adminOnlyFieldAccess,
+      },
+      options: [
+        { label: 'Users', value: 'users' },
+        { label: 'Media', value: 'media' },
       ],
     },
   ],
