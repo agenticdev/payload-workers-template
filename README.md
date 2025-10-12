@@ -1,101 +1,118 @@
-# Payload Cloudflare Template
+# Payload Workers Template
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/payloadcms/payload/tree/main/templates/with-cloudflare-d1)
+A template for deploying Payload CMS on Cloudflare Workers with D1 database and R2 storage.
 
-**This can only be deployed on Paid Workers right now due to size limits.** This template comes configured with the bare minimum to get started on anything you need.
+## Prerequisites
 
-## Quick start
+- [pnpm](https://pnpm.io/) installed
+- Cloudflare account
+- Git installed
 
-This template can be deployed directly to Cloudflare Workers by clicking the button to take you to the setup screen.
+## Getting Started
 
-From there you can connect your code to a git provider such Github or Gitlab, name your Workers, D1 Database and R2 Bucket as well as attach any additional environment variables or services you need.
-
-## Quick Start - local setup
-
-To spin up this template locally, follow these steps:
-
-### Clone
-
-After you click the `Deploy` button above, you'll want to have standalone copy of this repo on your machine. Cloudflare will connect your app to a git provider such as Github and you can access your code from there.
-
-### Local Development
-
-## How it works
-
-Out of the box, using [`Wrangler`](https://developers.cloudflare.com/workers/wrangler/) will automatically create local bindings for you to connect to the remote services and it can even create a local mock of the services you're using with Cloudflare.
-
-We've pre-configured Payload for you with the following:
-
-### Collections
-
-See the [Collections](https://payloadcms.com/docs/configuration/collections) docs for details on how to extend this functionality.
-
-- #### Users (Authentication)
-
-  Users are auth-enabled collections that have access to the admin panel.
-
-  For additional help, see the official [Auth Example](https://github.com/payloadcms/payload/tree/main/examples/auth) or the [Authentication](https://payloadcms.com/docs/authentication/overview#authentication-overview) docs.
-
-- #### Media
-
-  This is the uploads enabled collection.
-
-### Image Storage (R2)
-
-Images will be served from an R2 bucket which you can then further configure to use a CDN to serve for your frontend directly.
-
-### D1 Database
-
-The Worker will have direct access to a D1 SQLite database which Wrangler can connect locally to, just note that you won't have a connection string as you would typically with other providers.
-
-You can enable read replicas by adding `readReplicas: 'first-primary'` in the DB adapter and then enabling it on your D1 Cloudflare dashboard. Read more about this feature on [our docs](https://payloadcms.com/docs/database/sqlite#d1-read-replicas).
-
-## Working with Cloudflare
-
-Firstly, after installing dependencies locally you need to authenticate with Wrangler by running:
+### 1. Clone the Repository
 
 ```bash
-pnpm wrangler login
+git clone https://github.com/gunnarsaliev/payload-workers-template.git
+cd payload-workers-template
 ```
 
-This will take you to Cloudflare to login and then you can use the Wrangler CLI locally for anything, use `pnpm wrangler help` to see all available options.
-
-Wrangler is pretty smart so it will automatically bind your services for local development just by running `pnpm dev`.
-
-## Deployments
-
-When you're ready to deploy, first make sure you have created your migrations:
+### 2. Install Dependencies
 
 ```bash
-pnpm payload migrate:create
+pnpm install
 ```
 
-Then run the following command:
+### 3. Configure Git Remotes
+
+Add the template repository as a remote (useful for pulling future updates):
 
 ```bash
-pnpm run deploy
+git remote add template https://github.com/gunnarsaliev/payload-workers-template.git
 ```
 
-This will spin up Wrangler in `production` mode, run any created migrations, build the app and then deploy the bundle up to Cloudflare.
+Verify your remotes:
 
-That's it! You can if you wish move these steps into your CI pipeline as well.
+```bash
+git remote -v
+```
 
-## Enabling logs
+Set your own repository as the origin:
 
-By default logs are not enabled for your API, we've made this decision because it does run against your quota so we've left it opt-in. But you can easily enable logs in one click in the Cloudflare panel, [see docs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#enable-workers-logs).
+```bash
+git remote set-url origin {{your-new-repo-url}}
+```
 
-## Known issues
+Verify the changes:
 
-### GraphQL
+```bash
+git remote -v
+```
 
-We are currently waiting on some issues with GraphQL to be [fixed upstream in Workers](https://github.com/cloudflare/workerd/issues/5175) so full support for GraphQL is not currently guaranteed when deployed.
+## Cloudflare Setup
 
-### Worker size limits
+### 1. Create D1 Database and R2 Bucket
 
-We currently recommend deploying this template to the Paid Workers plan due to bundle [size limits](https://developers.cloudflare.com/workers/platform/limits/#worker-size) of 3mb. We're actively trying to reduce our bundle footprint over time to better meet this metric.
+In your Cloudflare dashboard:
+- Create a new D1 database
+- Create a new R2 bucket
 
-This also applies to your own code, in the case of importing a lot of libraries you may find yourself limited by the bundle.
+### 2. Update Configuration
 
-## Questions
+Edit the `wrangler.jsonc` file and replace:
+- Database name and D1 ID with your newly created D1 database details
+- R2 bucket name
+- Worker name to your desired worker name
 
-If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
+### 3. Commit Your Changes
+
+```bash
+git add .
+git commit -m "Update Cloudflare configuration"
+git push
+```
+
+## Deployment
+
+### 1. Create Cloudflare Workers Application
+
+1. Go to your Cloudflare dashboard
+2. Navigate to **Workers & Pages** > **Create application**
+3. Choose **"Import a repository"** and select your project repository
+
+### 2. Configure Build Settings
+
+Set the following build and deploy settings:
+
+- **Build command**: `pnpm run deploy:database`
+- **Deploy command**: `pnpm run deploy:app`
+
+### 3. Deploy
+
+Run your first deployment through the Cloudflare dashboard.
+
+### 4. Configure Secrets
+
+Add your Payload secret token to Cloudflare Worker:
+
+1. Go to your worker's settings
+2. Navigate to **Variables and Secrets**
+3. Add your `PAYLOAD_SECRET` token
+
+**Tip**: You can generate a secure secret using `openssl rand -base64 32` or visit [generate-secret.vercel.app](https://generate-secret.vercel.app/)
+
+## Success! 🎉
+
+Congratulations! Your Cloudflare Workers app is ready to go!
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+[Add your license here]
+
+## Support
+
+For issues and questions, please open an issue on the [GitHub repository](https://github.com/gunnarsaliev/payload-workers-template/issues).
