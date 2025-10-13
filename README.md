@@ -41,12 +41,6 @@ Add the template repository as a remote (useful for pulling future updates):
 git remote add template https://github.com/gunnarsaliev/payload-workers-template.git
 ```
 
-Verify your remotes:
-
-```bash
-git remote -v
-```
-
 Set your own repository as the origin:
 
 ```bash
@@ -56,7 +50,7 @@ git remote set-url origin {{your-new-repo-url}}
 Verify the changes:
 
 ```bash
-git remote -v
+git push
 ```
 
 ## Cloudflare Setup
