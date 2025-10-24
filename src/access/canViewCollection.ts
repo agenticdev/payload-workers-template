@@ -19,14 +19,14 @@ export const canViewCollection = (collectionSlug: string): Access => {
 
     // Editors can view collections in their visibleCollections OR editableCollections
     if (checkRole(['editor'], user)) {
-      const canView = user.visibleCollections?.includes(collectionSlug) || false
-      const canEdit = user.editableCollections?.includes(collectionSlug) || false
+      const canView = user.visibleCollections?.includes(collectionSlug as any) || false
+      const canEdit = user.editableCollections?.includes(collectionSlug as any) || false
       return canView || canEdit
     }
 
     // Viewers can only view their assigned collections
     if (checkRole(['viewer'], user)) {
-      return user.visibleCollections?.includes(collectionSlug) || false
+      return user.visibleCollections?.includes(collectionSlug as any) || false
     }
 
     return false

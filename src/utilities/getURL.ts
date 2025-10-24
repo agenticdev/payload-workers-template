@@ -1,4 +1,4 @@
-import canUseDOM from './canUseDOM'
+import { canUseDOM } from './canUseDOM'
 
 export const getServerSideURL = () => {
   return (

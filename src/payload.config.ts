@@ -1,15 +1,22 @@
 // storage-adapter-import-placeholder
 import { sqliteD1Adapter } from '@payloadcms/db-d1-sqlite' // database-adapter-import
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
-import { buildConfig } from 'payload'
+import { buildConfig, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
 import { CloudflareContext, getCloudflareContext } from '@opennextjs/cloudflare'
 import { GetPlatformProxyOptions } from 'wrangler'
 import { r2Storage } from '@payloadcms/storage-r2'
 
-import { Users } from './collections/Users'
+import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
+import { Pages } from './collections/Pages'
+import { Posts } from './collections/Posts'
+import { Users } from './collections/Users'
+import { Footer } from './Footer/config'
+import { Header } from './Header/config'
+import { plugins } from './plugins'
+import { defaultLexical } from '@/fields/defaultLexical'
+import { getServerSideURL } from './utilities/getURL'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -29,15 +36,33 @@ export default buildConfig({
     },
   },
   collections: [Pages, Posts, Media, Categories, Users],
-  editor: lexicalEditor(),
+  cors: [getServerSideURL()].filter(Boolean),
+  globals: [Header, Footer],
+  editor: defaultLexical,
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
+  },
+  jobs: {
+    access: {
+      run: ({ req }: { req: PayloadRequest }): boolean => {
+        // Allow logged in users to execute this endpoint (default)
+        if (req.user) return true
+
+        // If there is no logged in user, then check
+        // for the Vercel Cron secret to be present as an
+        // Authorization header:
+        const authHeader = req.headers.get('authorization')
+        return authHeader === `Bearer ${process.env.CRON_SECRET}`
+      },
+    },
+    tasks: [],
   },
   // database-adapter-config-start
   db: sqliteD1Adapter({ binding: cloudflare.env.D1 }),
   // database-adapter-config-end
   plugins: [
+    ...plugins,
     // storage-adapter-placeholder
     r2Storage({
       bucket: cloudflare.env.R2,

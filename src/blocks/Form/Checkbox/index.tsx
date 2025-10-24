@@ -26,7 +26,7 @@ export const Checkbox: React.FC<
           defaultChecked={defaultValue}
           id={name}
           {...props}
-          onCheckedChange={(checked) => {
+          onCheckedChange={(checked: boolean) => {
             setValue(props.name, checked)
           }}
         />

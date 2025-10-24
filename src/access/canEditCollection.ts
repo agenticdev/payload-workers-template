@@ -19,7 +19,7 @@ export const canEditCollection = (collectionSlug: string): Access => {
 
     // Editors can only edit their assigned collections
     if (checkRole(['editor'], user)) {
-      return user.editableCollections?.includes(collectionSlug) || false
+      return user.editableCollections?.includes(collectionSlug as any) || false
     }
 
     // Viewers cannot edit
