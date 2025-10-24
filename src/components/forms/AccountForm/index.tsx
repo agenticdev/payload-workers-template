@@ -52,7 +52,7 @@ export const AccountForm: React.FC<{ serverUser?: User }> = ({ serverUser }) => 
         })
 
         if (response.ok) {
-          const json = await response.json()
+          const json = await response.json() as { doc: User }
           setUser(json.doc)
           toast.success('Successfully updated account.')
           setChangePassword(false)

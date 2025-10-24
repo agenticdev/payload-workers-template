@@ -54,7 +54,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       })
 
       if (res.ok) {
-        const { data, errors } = await res.json()
+        const { data, errors } = await res.json() as any
         if (errors) throw new Error(errors[0].message)
         setUser(data?.loginUser?.user)
         setStatus('loggedIn')
@@ -81,7 +81,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       })
 
       if (res.ok) {
-        const { errors, user } = await res.json()
+        const { errors, user } = await res.json() as any
         if (errors) throw new Error(errors[0].message)
         setUser(user)
         setStatus('loggedIn')
@@ -127,7 +127,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         })
 
         if (res.ok) {
-          const { user: meUser } = await res.json()
+          const { user: meUser } = await res.json() as any
           setUser(meUser || null)
           setStatus(meUser ? 'loggedIn' : undefined)
         } else {
@@ -156,7 +156,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       })
 
       if (res.ok) {
-        const { data, errors } = await res.json()
+        const { data, errors } = await res.json() as any
         if (errors) throw new Error(errors[0].message)
         setUser(data?.loginUser?.user)
       } else {
@@ -183,7 +183,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       })
 
       if (res.ok) {
-        const { data, errors } = await res.json()
+        const { data, errors } = await res.json() as any
         if (errors) throw new Error(errors[0].message)
         setUser(data?.loginUser?.user)
         setStatus(data?.loginUser?.user ? 'loggedIn' : undefined)
