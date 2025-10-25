@@ -7,7 +7,7 @@ import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
-import { Pricing2 } from '@/blocks/Pricing2/Component'
+import { Pricing2 } from './Pricing2/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
