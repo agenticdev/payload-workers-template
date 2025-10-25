@@ -6,6 +6,9 @@ import { fileURLToPath } from 'url'
 import { CloudflareContext, getCloudflareContext } from '@opennextjs/cloudflare'
 import { GetPlatformProxyOptions } from 'wrangler'
 import { r2Storage } from '@payloadcms/storage-r2'
+import { en } from '@payloadcms/translations/languages/en'
+import { bg } from '@payloadcms/translations/languages/bg'
+import { tr } from '@payloadcms/translations/languages/tr'
 
 import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
@@ -42,6 +45,14 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+  },
+  i18n: {
+    supportedLanguages: { en, bg, tr },
+  },
+  localization: {
+    locales: ['en', 'bg', 'tr'],
+    defaultLocale: 'en',
+    fallback: true,
   },
   collections: [Pages, Posts, Media, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
