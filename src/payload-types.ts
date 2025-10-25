@@ -191,7 +191,7 @@ export interface Page {
       | null;
     media?: (number | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
+  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | Pricing2Block)[];
   meta?: {
     title?: string | null;
     /**
@@ -754,6 +754,36 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Pricing2Block".
+ */
+export interface Pricing2Block {
+  heading?: string | null;
+  description?: string | null;
+  plans?:
+    | {
+        id: string;
+        name: string;
+        description: string;
+        monthlyPrice: string;
+        yearlyPrice: string;
+        features?:
+          | {
+              text: string;
+              id?: string | null;
+            }[]
+          | null;
+        button: {
+          text: string;
+          url: string;
+        };
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'Pricing2';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1043,6 +1073,7 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
+        Pricing2?: T | Pricing2BlockSelect<T>;
       };
   meta?:
     | T
@@ -1139,6 +1170,37 @@ export interface FormBlockSelect<T extends boolean = true> {
   form?: T;
   enableIntro?: T;
   introContent?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Pricing2Block_select".
+ */
+export interface Pricing2BlockSelect<T extends boolean = true> {
+  heading?: T;
+  description?: T;
+  plans?:
+    | T
+    | {
+        id?: T;
+        name?: T;
+        description?: T;
+        monthlyPrice?: T;
+        yearlyPrice?: T;
+        features?:
+          | T
+          | {
+              text?: T;
+              id?: T;
+            };
+        button?:
+          | T
+          | {
+              text?: T;
+              url?: T;
+            };
+      };
   id?: T;
   blockName?: T;
 }

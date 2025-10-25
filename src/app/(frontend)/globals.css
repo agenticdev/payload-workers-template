@@ -1,3 +1,10 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* Custom theme values can be defined here if needed */
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
