@@ -399,9 +399,9 @@ export interface User {
     facebook?: string | null;
     instagram?: string | null;
   };
-  roles?: ('admin' | 'user' | 'editor' | 'viewer')[] | null;
+  roles?: ('super-admin' | 'admin' | 'modifier' | 'user')[] | null;
   /**
-   * Collections this editor can modify (only applies to editor role)
+   * Collections this user can modify (only applies to admin and modifier roles)
    */
   editableCollections?: ('users' | 'media')[] | null;
   /**

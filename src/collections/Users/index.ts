@@ -12,7 +12,7 @@ import { syncEditableToVisible } from './hooks/syncEditableToVisible'
 export const Users: CollectionConfig = {
   slug: 'users',
   access: {
-    admin: ({ req: { user } }) => checkRole(['admin', 'editor', 'viewer'], user),
+    admin: ({ req: { user } }) => checkRole(['super-admin', 'admin', 'modifier'], user),
     create: anyone,
     delete: adminOnly,
     read: adminOrSelf,
@@ -122,20 +122,20 @@ export const Users: CollectionConfig = {
       },
       options: [
         {
+          label: 'Super Admin',
+          value: 'super-admin',
+        },
+        {
           label: 'Admin',
           value: 'admin',
         },
         {
+          label: 'Modifier',
+          value: 'modifier',
+        },
+        {
           label: 'User',
           value: 'user',
-        },
-        {
-          label: 'Editor',
-          value: 'editor',
-        },
-        {
-          label: 'Viewer',
-          value: 'viewer',
         },
       ],
     },
@@ -144,8 +144,8 @@ export const Users: CollectionConfig = {
       type: 'select',
       hasMany: true,
       admin: {
-        description: 'Collections this editor can modify (only applies to editor role)',
-        condition: (data) => data?.roles?.includes('editor'),
+        description: 'Collections this user can modify (only applies to admin and modifier roles)',
+        condition: (data) => data?.roles?.includes('admin') || data?.roles?.includes('modifier'),
       },
       access: {
         create: adminOnlyFieldAccess,
@@ -164,7 +164,7 @@ export const Users: CollectionConfig = {
       admin: {
         description:
           'Collections this user can view (editable collections are automatically included)',
-        condition: (data) => data?.roles?.includes('editor') || data?.roles?.includes('viewer'),
+        condition: (data) => data?.roles?.includes('admin') || data?.roles?.includes('modifier'),
         readOnly: false,
       },
       hooks: {
