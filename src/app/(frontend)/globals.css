@@ -18,6 +18,16 @@
   h6 {
     font-size: unset;
     font-weight: unset;
+    color: hsl(0 0% 0%);
+  }
+
+  [data-theme='dark'] h1,
+  [data-theme='dark'] h2,
+  [data-theme='dark'] h3,
+  [data-theme='dark'] h4,
+  [data-theme='dark'] h5,
+  [data-theme='dark'] h6 {
+    color: hsl(0 0% 100%);
   }
 
   :root {
@@ -101,6 +111,57 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+  }
+
+  /* Customize prose colors for better contrast */
+  .prose {
+    --tw-prose-body: hsl(0 0% 0%);
+    --tw-prose-headings: hsl(0 0% 0%);
+    --tw-prose-links: hsl(0 0% 0%);
+    --tw-prose-bold: hsl(0 0% 0%);
+    --tw-prose-code: hsl(0 0% 0%);
+    --tw-prose-quotes: hsl(0 0% 0%);
+    --tw-prose-lead: hsl(0 0% 0%);
+    color: hsl(0 0% 0%);
+  }
+
+  .prose p,
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4,
+  .prose h5,
+  .prose h6,
+  .prose strong,
+  .prose a,
+  .prose li,
+  .prose blockquote {
+    color: hsl(0 0% 0%);
+  }
+
+  [data-theme='dark'] .prose {
+    --tw-prose-body: hsl(0 0% 100%);
+    --tw-prose-headings: hsl(0 0% 100%);
+    --tw-prose-links: hsl(0 0% 100%);
+    --tw-prose-bold: hsl(0 0% 100%);
+    --tw-prose-code: hsl(0 0% 100%);
+    --tw-prose-quotes: hsl(0 0% 100%);
+    --tw-prose-lead: hsl(0 0% 100%);
+    color: hsl(0 0% 100%);
+  }
+
+  [data-theme='dark'] .prose p,
+  [data-theme='dark'] .prose h1,
+  [data-theme='dark'] .prose h2,
+  [data-theme='dark'] .prose h3,
+  [data-theme='dark'] .prose h4,
+  [data-theme='dark'] .prose h5,
+  [data-theme='dark'] .prose h6,
+  [data-theme='dark'] .prose strong,
+  [data-theme='dark'] .prose a,
+  [data-theme='dark'] .prose li,
+  [data-theme='dark'] .prose blockquote {
+    color: hsl(0 0% 100%);
   }
 }
 

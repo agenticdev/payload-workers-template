@@ -25,7 +25,7 @@ export default async function Page({ params: paramsPromise }: Args) {
     collection: 'posts',
     depth: 1,
     limit: 12,
-    locale,
+    locale: locale as 'en' | 'bg' | 'tr',
     overrideAccess: false,
     select: {
       title: true,
@@ -36,11 +36,11 @@ export default async function Page({ params: paramsPromise }: Args) {
   })
 
   return (
-    <div className="pt-24 pb-24">
+    <div className="pt-24 pb-24 flex flex-col items-center justify-center">
       <PageClient />
       <div className="container mb-16">
-        <div className="prose dark:prose-invert max-w-none">
-          <h1>Posts</h1>
+        <div className="text-4xl font-bold max-w-none">
+          <h1 className="text-white">Posts</h1>
         </div>
       </div>
 
