@@ -40,7 +40,7 @@ export default async function Page({ params: paramsPromise }: Args) {
       <PageClient />
       <div className="container mb-16">
         <div className="text-4xl font-bold max-w-none">
-          <h1 className="text-white">Posts</h1>
+          <h1>Posts</h1>
         </div>
       </div>
 
