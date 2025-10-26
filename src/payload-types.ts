@@ -388,6 +388,8 @@ export interface User {
   id: number;
   name?: string | null;
   profileImage?: (number | null) | Media;
+  googleId?: string | null;
+  googleProfileImage?: string | null;
   description?: string | null;
   websiteURL?: string | null;
   socialLinks?: {
@@ -1377,6 +1379,8 @@ export interface CategoriesSelect<T extends boolean = true> {
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
   profileImage?: T;
+  googleId?: T;
+  googleProfileImage?: T;
   description?: T;
   websiteURL?: T;
   socialLinks?:

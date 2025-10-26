@@ -39,6 +39,32 @@ export const Users: CollectionConfig = {
       label: 'Profile Image',
     },
     {
+      name: 'googleId',
+      type: 'text',
+      label: 'Google ID',
+      admin: {
+        readOnly: true,
+        position: 'sidebar',
+      },
+      access: {
+        create: adminOnlyFieldAccess,
+        update: adminOnlyFieldAccess,
+      },
+    },
+    {
+      name: 'googleProfileImage',
+      type: 'text',
+      label: 'Google Profile Image URL',
+      admin: {
+        readOnly: true,
+        position: 'sidebar',
+      },
+      access: {
+        create: adminOnlyFieldAccess,
+        update: adminOnlyFieldAccess,
+      },
+    },
+    {
       name: 'description',
       type: 'textarea',
       localized: true,
