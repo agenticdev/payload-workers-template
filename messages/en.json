@@ -1,0 +1,47 @@
+{
+  "common": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "search": "Search",
+    "readMore": "Read more",
+    "loading": "Loading...",
+    "error": "Error",
+    "notFound": "Not found"
+  },
+  "navigation": {
+    "home": "Home",
+    "posts": "Posts",
+    "pages": "Pages",
+    "categories": "Categories"
+  },
+  "footer": {
+    "copyright": "© {year} All rights reserved"
+  },
+  "posts": {
+    "title": "Posts",
+    "readMore": "Read more",
+    "relatedPosts": "Related Posts",
+    "categories": "Categories",
+    "publishedOn": "Published on {date}",
+    "noPostsFound": "No posts found"
+  },
+  "pages": {
+    "notFound": "Page not found",
+    "backToHome": "Back to home"
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search for posts...",
+    "noResults": "No results found",
+    "results": "{count} results found"
+  },
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "signup": "Sign up",
+    "account": "Account",
+    "forgotPassword": "Forgot password",
+    "createAccount": "Create account"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "common": {
+    "home": "Ana Sayfa",
+    "about": "Hakkında",
+    "contact": "İletişim",
+    "search": "Ara",
+    "readMore": "Devamını oku",
+    "loading": "Yükleniyor...",
+    "error": "Hata",
+    "notFound": "Bulunamadı"
+  },
+  "navigation": {
+    "home": "Ana Sayfa",
+    "posts": "Gönderiler",
+    "pages": "Sayfalar",
+    "categories": "Kategoriler"
+  },
+  "footer": {
+    "copyright": "© {year} Tüm hakları saklıdır"
+  },
+  "posts": {
+    "title": "Gönderiler",
+    "readMore": "Devamını oku",
+    "relatedPosts": "İlgili Gönderiler",
+    "categories": "Kategoriler",
+    "publishedOn": "{date} tarihinde yayınlandı",
+    "noPostsFound": "Gönderi bulunamadı"
+  },
+  "pages": {
+    "notFound": "Sayfa bulunamadı",
+    "backToHome": "Ana sayfaya dön"
+  },
+  "search": {
+    "title": "Ara",
+    "placeholder": "Gönderi ara...",
+    "noResults": "Sonuç bulunamadı",
+    "results": "{count} sonuç bulundu"
+  },
+  "auth": {
+    "login": "Giriş",
+    "logout": "Çıkış",
+    "signup": "Kayıt ol",
+    "account": "Hesap",
+    "forgotPassword": "Parolamı unuttum",
+    "createAccount": "Hesap oluştur"
+  }
+}

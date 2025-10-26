@@ -1,0 +1,47 @@
+{
+  "common": {
+    "home": "Начало",
+    "about": "За нас",
+    "contact": "Контакт",
+    "search": "Търсене",
+    "readMore": "Прочети още",
+    "loading": "Зареждане...",
+    "error": "Грешка",
+    "notFound": "Не е намерен"
+  },
+  "navigation": {
+    "home": "Начало",
+    "posts": "Публикации",
+    "pages": "Страници",
+    "categories": "Категории"
+  },
+  "footer": {
+    "copyright": "© {year} Всички права запазени"
+  },
+  "posts": {
+    "title": "Публикации",
+    "readMore": "Прочети още",
+    "relatedPosts": "Свързани публикации",
+    "categories": "Категории",
+    "publishedOn": "Публикувано на {date}",
+    "noPostsFound": "Няма намерени публикации"
+  },
+  "pages": {
+    "notFound": "Страницата не е намерена",
+    "backToHome": "Обратно към началото"
+  },
+  "search": {
+    "title": "Търсене",
+    "placeholder": "Търсене на публикации...",
+    "noResults": "Няма намерени резултати",
+    "results": "{count} намерени резултата"
+  },
+  "auth": {
+    "login": "Вход",
+    "logout": "Изход",
+    "signup": "Регистрация",
+    "account": "Профил",
+    "forgotPassword": "Забравена парола",
+    "createAccount": "Създай профил"
+  }
+}

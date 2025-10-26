@@ -60,21 +60,26 @@ export const Pages: CollectionConfig<'pages'> = {
       name: 'title',
       type: 'text',
       required: true,
+      localized: true,
     },
     {
       type: 'tabs',
       tabs: [
         {
+          name: 'hero',
           fields: [hero],
           label: 'Hero',
+          localized: true,
         },
         {
+          name: 'content',
           fields: [
             {
               name: 'layout',
               type: 'blocks',
               blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, Pricing2],
               required: true,
+              localized: true,
               admin: {
                 initCollapsed: true,
               },
@@ -85,6 +90,7 @@ export const Pages: CollectionConfig<'pages'> = {
         {
           name: 'meta',
           label: 'SEO',
+          localized: true,
           fields: [
             OverviewField({
               titlePath: 'meta.title',
