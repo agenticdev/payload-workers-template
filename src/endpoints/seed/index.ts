@@ -221,7 +221,7 @@ export const seed = async ({
             link: {
               type: 'custom',
               label: 'Posts',
-              url: '/posts',
+              url: '/blog',
             },
           },
           {
