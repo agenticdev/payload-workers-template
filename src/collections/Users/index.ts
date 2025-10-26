@@ -30,6 +30,56 @@ export const Users: CollectionConfig = {
     {
       name: 'name',
       type: 'text',
+      localized: true,
+    },
+    {
+      name: 'profileImage',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Profile Image',
+    },
+    {
+      name: 'description',
+      type: 'textarea',
+      localized: true,
+      label: 'Description',
+    },
+    {
+      name: 'websiteURL',
+      type: 'text',
+      label: 'Website URL',
+    },
+    {
+      name: 'socialLinks',
+      type: 'group',
+      label: 'Social Links',
+      fields: [
+        {
+          name: 'twitter',
+          type: 'text',
+          label: 'Twitter',
+        },
+        {
+          name: 'linkedin',
+          type: 'text',
+          label: 'LinkedIn',
+        },
+        {
+          name: 'github',
+          type: 'text',
+          label: 'GitHub',
+        },
+        {
+          name: 'facebook',
+          type: 'text',
+          label: 'Facebook',
+        },
+        {
+          name: 'instagram',
+          type: 'text',
+          label: 'Instagram',
+        },
+      ],
     },
     {
       name: 'roles',

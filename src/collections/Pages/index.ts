@@ -78,7 +78,7 @@ export const Pages: CollectionConfig<'pages'> = {
               name: 'layout',
               type: 'blocks',
               blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, Pricing2],
-              required: true,
+              required: false, // Changed to false to allow seeding and locale switching
               localized: true,
               admin: {
                 initCollapsed: true,

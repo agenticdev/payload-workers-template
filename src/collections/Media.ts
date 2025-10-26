@@ -26,10 +26,12 @@ export const Media: CollectionConfig = {
     {
       name: 'alt',
       type: 'text',
+      localized: true,
       //required: true,
     },
     {
       name: 'caption',
+      localized: true,
       type: 'richText',
       editor: lexicalEditor({
         features: ({ rootFeatures }) => {

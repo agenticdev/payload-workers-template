@@ -42,9 +42,9 @@ export default async function LocaleLayout({
           }}
         />
 
-        <Header />
+        <Header locale={locale} />
         {children}
-        <Footer />
+        <Footer locale={locale} />
       </Providers>
     </NextIntlClientProvider>
   )

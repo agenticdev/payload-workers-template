@@ -66,7 +66,8 @@ export default async function Page({ params: paramsPromise }: Args) {
     return <PayloadRedirects url={url} />
   }
 
-  const { hero, layout } = page
+  const { hero, content } = page
+  const layout = content?.layout
 
   return (
     <article className="pt-16 pb-24">

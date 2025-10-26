@@ -193,8 +193,8 @@ export interface Page {
       media?: (number | null) | Media;
     };
   };
-  content: {
-    layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | Pricing2Block)[];
+  content?: {
+    layout?: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | Pricing2Block)[] | null;
   };
   meta?: {
     title?: string | null;
@@ -387,6 +387,16 @@ export interface Category {
 export interface User {
   id: number;
   name?: string | null;
+  profileImage?: (number | null) | Media;
+  description?: string | null;
+  websiteURL?: string | null;
+  socialLinks?: {
+    twitter?: string | null;
+    linkedin?: string | null;
+    github?: string | null;
+    facebook?: string | null;
+    instagram?: string | null;
+  };
   roles?: ('admin' | 'user' | 'editor' | 'viewer')[] | null;
   /**
    * Collections this editor can modify (only applies to editor role)
@@ -1366,6 +1376,18 @@ export interface CategoriesSelect<T extends boolean = true> {
  */
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
+  profileImage?: T;
+  description?: T;
+  websiteURL?: T;
+  socialLinks?:
+    | T
+    | {
+        twitter?: T;
+        linkedin?: T;
+        github?: T;
+        facebook?: T;
+        instagram?: T;
+      };
   roles?: T;
   editableCollections?: T;
   visibleCollections?: T;
