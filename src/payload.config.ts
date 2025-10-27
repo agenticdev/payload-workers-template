@@ -7,6 +7,8 @@ import { CloudflareContext, getCloudflareContext } from '@opennextjs/cloudflare'
 import { GetPlatformProxyOptions } from 'wrangler'
 import { r2Storage } from '@payloadcms/storage-r2'
 import { defaultLocale, payloadLocales } from './utilities/locales'
+import sharp from 'sharp'
+import { resendAdapter } from './email/resendAdapter'
 
 import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
@@ -42,6 +44,14 @@ const cloudflare =
 
 export default buildConfig({
   serverURL: getServerSideURL(),
+  sharp,
+  email: process.env.RESEND_API_KEY
+    ? resendAdapter({
+        apiKey: process.env.RESEND_API_KEY,
+        defaultFromAddress: process.env.RESEND_DEFAULT_EMAIL || 'noreply@example.com',
+        defaultFromName: process.env.RESEND_DEFAULT_NAME || 'Payload CMS',
+      })
+    : undefined,
   admin: {
     components: {
       // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
