@@ -21,12 +21,15 @@ export const revalidatePost: CollectionAfterChangeHook<Post> = ({
 
     // If the post was previously published, we need to revalidate the old path
     if (previousDoc._status === 'published' && doc._status !== 'published') {
-      const oldPath = `/blog/${previousDoc.slug}`
+      // Only revalidate if previousDoc has a valid slug
+      if (previousDoc.slug && typeof previousDoc.slug === 'string') {
+        const oldPath = `/blog/${previousDoc.slug}`
 
-      payload.logger.info(`Revalidating old post at path: ${oldPath}`)
+        payload.logger.info(`Revalidating old post at path: ${oldPath}`)
 
-      revalidatePath(oldPath)
-      revalidateTag('posts-sitemap')
+        revalidatePath(oldPath)
+        revalidateTag('posts-sitemap')
+      }
     }
   }
   return doc

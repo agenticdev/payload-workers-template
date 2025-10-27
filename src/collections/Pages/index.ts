@@ -9,7 +9,7 @@ import { FormBlock } from '../../blocks/Form/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { Pricing2 } from '../../blocks/Pricing2/config'
 import { hero } from '@/heros/config'
-import { slugField } from 'payload'
+import { slugField } from '@/fields/slug'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidateDelete, revalidatePage } from './hooks/revalidatePage'
@@ -124,7 +124,7 @@ export const Pages: CollectionConfig<'pages'> = {
         position: 'sidebar',
       },
     },
-    slugField(),
+    ...slugField('title', { collection: 'pages' }),
   ],
   hooks: {
     afterChange: [revalidatePage],
@@ -134,7 +134,10 @@ export const Pages: CollectionConfig<'pages'> = {
   versions: {
     drafts: {
       autosave: {
-        interval: 100, // We set this interval for optimal live preview
+        // Use environment variable for autosave interval (default: 10 seconds)
+        // This reduces server load and prevents excessive requests during typing
+        // Configure via PAYLOAD_AUTOSAVE_INTERVAL in .env
+        interval: parseInt(process.env.PAYLOAD_AUTOSAVE_INTERVAL || '10000', 10),
       },
       schedulePublish: true,
     },

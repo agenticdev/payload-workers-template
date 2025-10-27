@@ -54,7 +54,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   page = await queryPageBySlug({
     slug: decodedSlug,
-    locale,
+    locale: locale as 'en' | 'bg' | 'tr',
   })
 
   // Remove this code once your website is seeded
@@ -89,24 +89,25 @@ export async function generateMetadata({ params: paramsPromise }: Args): Promise
   const decodedSlug = decodeURIComponent(slug)
   const page = await queryPageBySlug({
     slug: decodedSlug,
-    locale,
+    locale: locale as 'en' | 'bg' | 'tr',
   })
 
   return generateMeta({ doc: page })
 }
 
-const queryPageBySlug = cache(async ({ slug, locale }: { slug: string; locale: string }) => {
-  const { isEnabled: draft } = await draftMode()
+const queryPageBySlug = cache(
+  async ({ slug, locale }: { slug: string; locale: 'en' | 'bg' | 'tr' }) => {
+    const { isEnabled: draft } = await draftMode()
 
-  const payload = await getPayload({ config: configPromise })
+    const payload = await getPayload({ config: configPromise })
 
-  const result = await payload.find({
-    collection: 'pages',
-    draft,
-    limit: 1,
-    locale,
-    pagination: false,
-    overrideAccess: draft,
+    const result = await payload.find({
+      collection: 'pages',
+      draft,
+      limit: 1,
+      locale,
+      pagination: false,
+      overrideAccess: draft,
     where: {
       slug: {
         equals: slug,
@@ -114,5 +115,6 @@ const queryPageBySlug = cache(async ({ slug, locale }: { slug: string; locale: s
     },
   })
 
-  return result.docs?.[0] || null
-})
+    return result.docs?.[0] || null
+  },
+)

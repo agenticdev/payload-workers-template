@@ -28,6 +28,25 @@ export const Users: CollectionConfig = {
   },
   fields: [
     {
+      name: 'password',
+      type: 'text',
+      required: false,
+      validate: (value: unknown, { data }: { data: Record<string, unknown> }) => {
+        // Allow empty password if user has OAuth ID (Google, etc.)
+        if (!value && data?.googleId) {
+          return true
+        }
+        // For non-OAuth users, require password with minimum length
+        if (!value) {
+          return 'Password is required for non-OAuth users'
+        }
+        if (typeof value === 'string' && value.length < 3) {
+          return 'Password must be at least 3 characters'
+        }
+        return true
+      },
+    },
+    {
       name: 'name',
       type: 'text',
       localized: true,

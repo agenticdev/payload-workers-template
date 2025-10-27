@@ -59,6 +59,7 @@
     "next": "15.4.4",
     "next-intl": "^4.4.0",
     "next-sitemap": "^4.2.3",
+    "openai": "^6.7.0",
     "payload": "3.59.1",
     "payload-oauth2": "^1.0.19",
     "postcss": "^8.5.6",
@@ -67,6 +68,7 @@
     "react-dom": "19.1.0",
     "react-hook-form": "^7.65.0",
     "resend": "^6.2.2",
+    "slugify": "^1.6.6",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.14"

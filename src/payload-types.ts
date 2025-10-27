@@ -71,6 +71,8 @@ export interface Config {
     posts: Post;
     media: Media;
     categories: Category;
+    dictionary: Dictionary;
+    'part-of-speech': PartOfSpeech;
     users: User;
     redirects: Redirect;
     forms: Form;
@@ -87,6 +89,8 @@ export interface Config {
     posts: PostsSelect<false> | PostsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
+    dictionary: DictionarySelect<false> | DictionarySelect<true>;
+    'part-of-speech': PartOfSpeechSelect<false> | PartOfSpeechSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
@@ -114,6 +118,13 @@ export interface Config {
   };
   jobs: {
     tasks: {
+      translatePage: TaskTranslatePage;
+      translatePost: TaskTranslatePost;
+      translateWord: TaskTranslateWord;
+      translateMediaAlt: TaskTranslateMediaAlt;
+      translateCategory: TaskTranslateCategory;
+      translateUser: TaskTranslateUser;
+      translatePartOfSpeech: TaskTranslatePartOfSpeech;
       schedulePublish: TaskSchedulePublish;
       inline: {
         input: unknown;
@@ -205,11 +216,8 @@ export interface Page {
     description?: string | null;
   };
   publishedAt?: string | null;
-  /**
-   * When enabled, the slug will auto-generate from the title field on save and autosave.
-   */
-  generateSlug?: boolean | null;
-  slug: string;
+  slug?: string | null;
+  slugLock?: boolean | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -255,11 +263,8 @@ export interface Post {
         name?: string | null;
       }[]
     | null;
-  /**
-   * When enabled, the slug will auto-generate from the title field on save and autosave.
-   */
-  generateSlug?: boolean | null;
-  slug: string;
+  slug?: string | null;
+  slugLock?: boolean | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -363,11 +368,8 @@ export interface Media {
 export interface Category {
   id: number;
   title: string;
-  /**
-   * When enabled, the slug will auto-generate from the title field on save and autosave.
-   */
-  generateSlug?: boolean | null;
-  slug: string;
+  slug?: string | null;
+  slugLock?: boolean | null;
   parent?: (number | null) | Category;
   breadcrumbs?:
     | {
@@ -386,6 +388,7 @@ export interface Category {
  */
 export interface User {
   id: number;
+  password?: string | null;
   name?: string | null;
   profileImage?: (number | null) | Media;
   googleId?: string | null;
@@ -424,7 +427,6 @@ export interface User {
         expiresAt: string;
       }[]
     | null;
-  password?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -800,6 +802,56 @@ export interface Pricing2Block {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "dictionary".
+ */
+export interface Dictionary {
+  id: number;
+  publishedAt?: string | null;
+  word: string;
+  definitions: string;
+  pronunciation?: string | null;
+  part_of_speech: number | PartOfSpeech;
+  example?: string | null;
+  etymology?: string | null;
+  synonyms?: (number | Dictionary)[] | null;
+  antonyms?: (number | Dictionary)[] | null;
+  slug?: string | null;
+  slugLock?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "part-of-speech".
+ */
+export interface PartOfSpeech {
+  id: number;
+  name: string;
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  slug?: string | null;
+  slugLock?: boolean | null;
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -924,7 +976,16 @@ export interface PayloadJob {
     | {
         executedAt: string;
         completedAt: string;
-        taskSlug: 'inline' | 'schedulePublish';
+        taskSlug:
+          | 'inline'
+          | 'translatePage'
+          | 'translatePost'
+          | 'translateWord'
+          | 'translateMediaAlt'
+          | 'translateCategory'
+          | 'translateUser'
+          | 'translatePartOfSpeech'
+          | 'schedulePublish';
         taskID: string;
         input?:
           | {
@@ -957,7 +1018,19 @@ export interface PayloadJob {
         id?: string | null;
       }[]
     | null;
-  taskSlug?: ('inline' | 'schedulePublish') | null;
+  taskSlug?:
+    | (
+        | 'inline'
+        | 'translatePage'
+        | 'translatePost'
+        | 'translateWord'
+        | 'translateMediaAlt'
+        | 'translateCategory'
+        | 'translateUser'
+        | 'translatePartOfSpeech'
+        | 'schedulePublish'
+      )
+    | null;
   queue?: string | null;
   waitUntil?: string | null;
   processing?: boolean | null;
@@ -986,6 +1059,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'categories';
         value: number | Category;
+      } | null)
+    | ({
+        relationTo: 'dictionary';
+        value: number | Dictionary;
+      } | null)
+    | ({
+        relationTo: 'part-of-speech';
+        value: number | PartOfSpeech;
       } | null)
     | ({
         relationTo: 'users';
@@ -1107,8 +1188,8 @@ export interface PagesSelect<T extends boolean = true> {
         description?: T;
       };
   publishedAt?: T;
-  generateSlug?: T;
   slug?: T;
+  slugLock?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -1253,8 +1334,8 @@ export interface PostsSelect<T extends boolean = true> {
         id?: T;
         name?: T;
       };
-  generateSlug?: T;
   slug?: T;
+  slugLock?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -1358,8 +1439,8 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface CategoriesSelect<T extends boolean = true> {
   title?: T;
-  generateSlug?: T;
   slug?: T;
+  slugLock?: T;
   parent?: T;
   breadcrumbs?:
     | T
@@ -1374,9 +1455,44 @@ export interface CategoriesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "dictionary_select".
+ */
+export interface DictionarySelect<T extends boolean = true> {
+  publishedAt?: T;
+  word?: T;
+  definitions?: T;
+  pronunciation?: T;
+  part_of_speech?: T;
+  example?: T;
+  etymology?: T;
+  synonyms?: T;
+  antonyms?: T;
+  slug?: T;
+  slugLock?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "part-of-speech_select".
+ */
+export interface PartOfSpeechSelect<T extends boolean = true> {
+  name?: T;
+  description?: T;
+  slug?: T;
+  slugLock?: T;
+  publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  password?: T;
   name?: T;
   profileImage?: T;
   googleId?: T;
@@ -1773,6 +1889,97 @@ export interface FooterSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TaskTranslatePage".
+ */
+export interface TaskTranslatePage {
+  input: {
+    pageId: number;
+  };
+  output: {
+    success: boolean;
+    message: string;
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TaskTranslatePost".
+ */
+export interface TaskTranslatePost {
+  input: {
+    postId: number;
+  };
+  output: {
+    success: boolean;
+    message: string;
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TaskTranslateWord".
+ */
+export interface TaskTranslateWord {
+  input: {
+    dictionaryId: number;
+  };
+  output: {
+    success: boolean;
+    message: string;
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TaskTranslateMediaAlt".
+ */
+export interface TaskTranslateMediaAlt {
+  input: {
+    mediaId: number;
+  };
+  output: {
+    success: boolean;
+    message: string;
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TaskTranslateCategory".
+ */
+export interface TaskTranslateCategory {
+  input: {
+    categoryId: number;
+  };
+  output: {
+    success: boolean;
+    message: string;
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TaskTranslateUser".
+ */
+export interface TaskTranslateUser {
+  input: {
+    userId: number;
+  };
+  output: {
+    success: boolean;
+    message: string;
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TaskTranslatePartOfSpeech".
+ */
+export interface TaskTranslatePartOfSpeech {
+  input: {
+    partOfSpeechId: number;
+  };
+  output: {
+    success: boolean;
+    message: string;
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "TaskSchedulePublish".
  */
 export interface TaskSchedulePublish {
@@ -1787,6 +1994,14 @@ export interface TaskSchedulePublish {
       | ({
           relationTo: 'posts';
           value: number | Post;
+        } | null)
+      | ({
+          relationTo: 'dictionary';
+          value: number | Dictionary;
+        } | null)
+      | ({
+          relationTo: 'part-of-speech';
+          value: number | PartOfSpeech;
         } | null);
     global?: string | null;
     user?: (number | null) | User;

@@ -20,6 +20,15 @@ import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
+import {
+  translatePageTask,
+  translatePostTask,
+  translateWord,
+  translateMediaTask,
+  translateUserTask,
+  translatePartOfSpeechTask,
+  translateCategoryTask,
+} from './tasks/translator'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -32,6 +41,7 @@ const cloudflare =
     : await getCloudflareContext({ async: true })
 
 export default buildConfig({
+  serverURL: getServerSideURL(),
   admin: {
     components: {
       // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
@@ -72,7 +82,169 @@ export default buildConfig({
         return authHeader === `Bearer ${process.env.CRON_SECRET}`
       },
     },
-    tasks: [],
+    tasks: [
+      {
+        slug: 'translatePage',
+        handler: translatePageTask,
+        inputSchema: [
+          {
+            name: 'pageId',
+            type: 'number',
+            required: true,
+          },
+        ],
+        outputSchema: [
+          {
+            name: 'success',
+            type: 'checkbox',
+            required: true,
+          },
+          {
+            name: 'message',
+            type: 'text',
+            required: true,
+          },
+        ],
+      },
+      {
+        slug: 'translatePost',
+        handler: translatePostTask,
+        inputSchema: [
+          {
+            name: 'postId',
+            type: 'number',
+            required: true,
+          },
+        ],
+        outputSchema: [
+          {
+            name: 'success',
+            type: 'checkbox',
+            required: true,
+          },
+          {
+            name: 'message',
+            type: 'text',
+            required: true,
+          },
+        ],
+      },
+      {
+        slug: 'translateWord',
+        handler: translateWord,
+        inputSchema: [
+          {
+            name: 'dictionaryId',
+            type: 'number',
+            required: true,
+          },
+        ],
+        outputSchema: [
+          {
+            name: 'success',
+            type: 'checkbox',
+            required: true,
+          },
+          {
+            name: 'message',
+            type: 'text',
+            required: true,
+          },
+        ],
+      },
+      {
+        slug: 'translateMediaAlt',
+        handler: translateMediaTask,
+        inputSchema: [
+          {
+            name: 'mediaId',
+            type: 'number',
+            required: true,
+          },
+        ],
+        outputSchema: [
+          {
+            name: 'success',
+            type: 'checkbox',
+            required: true,
+          },
+          {
+            name: 'message',
+            type: 'text',
+            required: true,
+          },
+        ],
+      },
+      {
+        slug: 'translateCategory',
+        handler: translateCategoryTask,
+        inputSchema: [
+          {
+            name: 'categoryId',
+            type: 'number',
+            required: true,
+          },
+        ],
+        outputSchema: [
+          {
+            name: 'success',
+            type: 'checkbox',
+            required: true,
+          },
+          {
+            name: 'message',
+            type: 'text',
+            required: true,
+          },
+        ],
+      },
+      {
+        slug: 'translateUser',
+        handler: translateUserTask,
+        inputSchema: [
+          {
+            name: 'userId',
+            type: 'number',
+            required: true,
+          },
+        ],
+        outputSchema: [
+          {
+            name: 'success',
+            type: 'checkbox',
+            required: true,
+          },
+          {
+            name: 'message',
+            type: 'text',
+            required: true,
+          },
+        ],
+      },
+      {
+        slug: 'translatePartOfSpeech',
+        handler: translatePartOfSpeechTask,
+        inputSchema: [
+          {
+            name: 'partOfSpeechId',
+            type: 'number',
+            required: true,
+          },
+        ],
+        outputSchema: [
+          {
+            name: 'success',
+            type: 'checkbox',
+            required: true,
+          },
+          {
+            name: 'message',
+            type: 'text',
+            required: true,
+          },
+        ],
+      },
+    ],
   },
   // database-adapter-config-start
   db: sqliteD1Adapter({ binding: cloudflare.env.D1 }),

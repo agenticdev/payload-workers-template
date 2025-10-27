@@ -2,7 +2,7 @@ import type { CollectionConfig } from 'payload'
 
 import { anyone } from '../access/anyone'
 import { authenticated } from '../access/authenticated'
-import { slugField } from 'payload'
+import { slugField } from '@/fields/slug'
 
 export const Categories: CollectionConfig = {
   slug: 'categories',
@@ -22,8 +22,13 @@ export const Categories: CollectionConfig = {
       required: true,
       localized: true,
     },
-    slugField({
-      position: undefined,
+    ...slugField('title', {
+      collection: 'categories',
+      slugOverrides: {
+        admin: {
+          position: undefined,
+        }
+      }
     }),
   ],
 }

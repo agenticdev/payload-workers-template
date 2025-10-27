@@ -25,7 +25,8 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
-import { slugField } from 'payload'
+import { slugField } from '@/fields/slug'
+import { triggerTranslatePost } from './hooks/triggerTranslatePost'
 
 export const Posts: CollectionConfig<'posts'> = {
   slug: 'posts',
@@ -98,8 +99,27 @@ export const Posts: CollectionConfig<'posts'> = {
                 },
               }),
               label: false,
-              required: false, // Changed to false to allow empty content when switching locales
+              required: false,
               localized: true,
+              defaultValue: {
+                root: {
+                  type: 'root',
+                  children: [
+                    {
+                      type: 'paragraph',
+                      version: 1,
+                      children: [],
+                      direction: null,
+                      format: '',
+                      indent: 0,
+                    },
+                  ],
+                  direction: null,
+                  format: '',
+                  indent: 0,
+                  version: 1,
+                },
+              },
             },
           ],
           label: 'Content',
@@ -217,17 +237,20 @@ export const Posts: CollectionConfig<'posts'> = {
         },
       ],
     },
-    slugField(),
+    ...slugField('title', { collection: 'posts' }),
   ],
   hooks: {
-    afterChange: [revalidatePost],
+    afterChange: [revalidatePost, triggerTranslatePost],
     afterRead: [populateAuthors],
     afterDelete: [revalidateDelete],
   },
   versions: {
     drafts: {
       autosave: {
-        interval: 100, // We set this interval for optimal live preview
+        // Use environment variable for autosave interval (default: 10 seconds)
+        // This reduces server load and prevents excessive requests during typing
+        // Configure via PAYLOAD_AUTOSAVE_INTERVAL in .env
+        interval: parseInt(process.env.PAYLOAD_AUTOSAVE_INTERVAL || '10000', 10),
       },
       schedulePublish: true,
     },
