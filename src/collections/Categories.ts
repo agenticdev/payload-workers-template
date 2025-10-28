@@ -31,4 +31,11 @@ export const Categories: CollectionConfig = {
       }
     }),
   ],
+  versions: {
+    drafts: {
+      // Autosave disabled to prevent requests on every keystroke
+      // Users must manually save using Cmd+S or the Save button
+      autosave: false,
+    },
+  },
 }

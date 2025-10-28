@@ -50,14 +50,8 @@ export const Posts: CollectionConfig<'posts'> = {
   },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
-    livePreview: {
-      url: ({ data, req }) =>
-        generatePreviewPath({
-          slug: data?.slug,
-          collection: 'posts',
-          req,
-        }),
-    },
+    // Live preview disabled to prevent auto-save requests on every keystroke
+    // Users can still preview by clicking the "Preview" button which opens in a new tab
     preview: (data, { req }) =>
       generatePreviewPath({
         slug: data?.slug as string,
@@ -246,12 +240,10 @@ export const Posts: CollectionConfig<'posts'> = {
   },
   versions: {
     drafts: {
-      autosave: {
-        // Use environment variable for autosave interval (default: 10 seconds)
-        // This reduces server load and prevents excessive requests during typing
-        // Configure via PAYLOAD_AUTOSAVE_INTERVAL in .env
-        interval: parseInt(process.env.PAYLOAD_AUTOSAVE_INTERVAL || '10000', 10),
-      },
+      // Autosave disabled to prevent requests on every keystroke
+      // Users must manually save using Cmd+S or the Save button
+      // This significantly reduces server load during content creation
+      autosave: false,
       schedulePublish: true,
     },
     maxPerDoc: 50,

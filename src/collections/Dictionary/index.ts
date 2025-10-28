@@ -134,12 +134,9 @@ const Dictionary: CollectionConfig = {
   ],
   versions: {
     drafts: {
-      autosave: {
-        // Use environment variable for autosave interval (default: 10 seconds)
-        // This reduces server load and prevents excessive requests during typing
-        // Configure via PAYLOAD_AUTOSAVE_INTERVAL in .env
-        interval: parseInt(process.env.PAYLOAD_AUTOSAVE_INTERVAL || '10000', 10),
-      },
+      // Autosave disabled to prevent requests on every keystroke
+      // Users must manually save using Cmd+S or the Save button
+      autosave: false,
       schedulePublish: true,
     },
     maxPerDoc: 50,

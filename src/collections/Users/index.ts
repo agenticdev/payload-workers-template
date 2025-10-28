@@ -31,11 +31,21 @@ export const Users: CollectionConfig = {
       name: 'password',
       type: 'text',
       required: false,
-      validate: (value: unknown, { data }: { data: Record<string, unknown> }) => {
+      validate: (value: unknown, { data, operation, req }: any) => {
         // Allow empty password if user has OAuth ID (Google, etc.)
-        if (!value && data?.googleId) {
+        // Check if OAuth-related keys exist in the data object (even if undefined)
+        // The OAuth plugin adds these keys during user creation
+        const hasOAuthKeys = data && ('googleId' in data || 'sub' in data || 'googleProfileImage' in data)
+
+        if (!value && hasOAuthKeys) {
           return true
         }
+
+        // For updates, if the user already has an OAuth ID, don't require password
+        if (!value && operation === 'update' && req?.user?.googleId) {
+          return true
+        }
+
         // For non-OAuth users, require password with minimum length
         if (!value) {
           return 'Password is required for non-OAuth users'
@@ -200,4 +210,14 @@ export const Users: CollectionConfig = {
       ],
     },
   ],
+  versions: {
+    drafts: {
+      autosave: {
+        // Use environment variable for autosave interval (default: 10 seconds)
+        // This reduces server load and prevents excessive requests during typing
+        // Configure via PAYLOAD_AUTOSAVE_INTERVAL in .env
+        interval: parseInt(process.env.PAYLOAD_AUTOSAVE_INTERVAL || '10000', 10),
+      },
+    },
+  },
 }
