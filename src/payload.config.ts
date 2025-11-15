@@ -17,8 +17,6 @@ import { Posts } from './collections/Posts'
 import { Users } from './collections/Users'
 import Dictionary from './collections/Dictionary'
 import PartOfSpeech from './collections/PartOfSpeech'
-import { Footer } from './Footer/config'
-import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
@@ -73,7 +71,7 @@ export default buildConfig({
   },
   collections: [Pages, Posts, Media, Categories, Users, Dictionary, PartOfSpeech],
   cors: [getServerSideURL()].filter(Boolean),
-  globals: [Header, Footer],
+  globals: [],
   editor: defaultLexical,
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

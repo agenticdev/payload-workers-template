@@ -5,8 +5,6 @@ import { getMessages, setRequestLocale } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
 
 import { AdminBar } from '@/components/AdminBar'
-import { Footer } from '@/Footer/Component'
-import { Header } from '@/Header/Component'
 import { Providers } from '@/providers'
 import { LocaleHtmlLang } from '@/components/LocaleHtmlLang'
 
@@ -41,10 +39,7 @@ export default async function LocaleLayout({
             preview: isEnabled,
           }}
         />
-
-        <Header locale={locale} />
         {children}
-        <Footer locale={locale} />
       </Providers>
     </NextIntlClientProvider>
   )
