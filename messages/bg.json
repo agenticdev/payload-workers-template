@@ -16,8 +16,8 @@
     "categories": "Категории"
   },
   "navbar": {
-    "logoAlt": "Shadcn UI Навигация",
-    "logoTitle": "Shadcnblocks.com",
+    "logoAlt": "Payload Workers Template",
+    "logoTitle": "Payload Workers Template",
     "features": {
       "title": "Функции",
       "dashboard": {
@@ -45,8 +45,7 @@
         "description": "Получете помощ когато е необходимо"
       }
     },
-    "products": "Продукти",
-    "resources": "Ресурси",
+    "about": "За нас",
     "contact": "Контакт",
     "templates": "Шаблони",
     "blog": "Блог",
@@ -56,7 +55,7 @@
   },
   "footer": {
     "copyright": "© {year} Всички права запазени",
-    "logoTitle": "Shadcnblocks.com",
+    "logoTitle": "Payload Workers Template",
     "logoAlt": "лого",
     "description": "Колекция от компоненти за вашия стартъп бизнес или страничен проект.",
     "product": {

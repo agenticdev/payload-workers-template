@@ -13,8 +13,8 @@ interface Footer7Props {
 
 const Footer7 = ({
   logo = {
-    url: 'https://www.shadcnblocks.com',
-    src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg',
+    url: '/',
+    src: 'https://asset.cooksa.com/media/logo.svg',
   },
 }: Footer7Props) => {
   const t = useTranslations('footer')

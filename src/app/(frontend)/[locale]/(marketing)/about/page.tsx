@@ -32,33 +32,6 @@ interface About3Props {
   }>
 }
 
-const defaultCompanies = [
-  {
-    src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-1.svg',
-    alt: 'Arc',
-  },
-  {
-    src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-2.svg',
-    alt: 'Descript',
-  },
-  {
-    src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-3.svg',
-    alt: 'Mercury',
-  },
-  {
-    src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-4.svg',
-    alt: 'Ramp',
-  },
-  {
-    src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-5.svg',
-    alt: 'Retool',
-  },
-  {
-    src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-6.svg',
-    alt: 'Watershed',
-  },
-]
-
 const defaultAchievements = [
   { label: 'Companies ', value: '300+' },
   { label: 'Projects Finalized', value: '800+' },
@@ -70,27 +43,22 @@ const About3 = ({
   title = 'About Us',
   description = 'Shadcnblocks is a passionate team dedicated to creating innovative solutions that empower businesses to thrive in the digital age.',
   mainImage = {
-    src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg',
+    src: 'https://images.unsplash.com/photo-1578735546632-9ff1f1e7518e',
     alt: 'placeholder',
   },
   secondaryImage = {
-    src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg',
+    src: 'https://images.unsplash.com/photo-1712251769281-9f682a57aaca',
     alt: 'placeholder',
   },
   breakout = {
-    src: 'https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg',
+    src: 'https://asset.cooksa.com/media/logo.svg',
     alt: 'logo',
     title: 'Hundreds of blocks at Shadcnblocks.com',
     description:
       'Providing businesses with effective tools to improve workflows, boost efficiency, and encourage growth.',
     buttonText: 'Discover more',
-    buttonUrl: 'https://shadcnblocks.com',
+    buttonUrl: '/',
   },
-  companiesTitle = 'Valued by clients worldwide',
-  companies = defaultCompanies,
-  achievementsTitle = 'Our Achievements in Numbers',
-  achievementsDescription = 'Providing businesses with effective tools to improve workflows, boost efficiency, and encourage growth.',
-  achievements = defaultAchievements,
 }: About3Props = {}) => {
   return (
     <section className="py-32">

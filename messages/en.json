@@ -16,8 +16,8 @@
     "categories": "Categories"
   },
   "navbar": {
-    "logoAlt": "Shadcn UI Navbar",
-    "logoTitle": "Shadcnblocks.com",
+    "logoAlt": "Payload Workers Template",
+    "logoTitle": "Payload Workers Template",
     "features": {
       "title": "Features",
       "dashboard": {
@@ -45,8 +45,7 @@
         "description": "Get help when needed"
       }
     },
-    "products": "Products",
-    "resources": "Resources",
+    "about": "About",
     "contact": "Contact",
     "templates": "Templates",
     "blog": "Blog",
@@ -56,7 +55,7 @@
   },
   "footer": {
     "copyright": "© {year} All rights reserved",
-    "logoTitle": "Shadcnblocks.com",
+    "logoTitle": "Payload Workers Template",
     "logoAlt": "logo",
     "description": "A collection of components for your startup business or side project.",
     "product": {

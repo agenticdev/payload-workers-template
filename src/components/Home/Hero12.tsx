@@ -24,7 +24,7 @@ const Hero12 = () => {
           <div className="flex flex-col items-center gap-6 text-center">
             <div className="bg-background/30 rounded-xl p-4 shadow-sm backdrop-blur-sm">
               <img
-                src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg"
+                src="https://asset.cooksa.com/media/logo.svg"
                 alt={t('logoAlt')}
                 className="h-16"
               />

@@ -16,8 +16,8 @@
     "categories": "Kategoriler"
   },
   "navbar": {
-    "logoAlt": "Shadcn UI Navbar",
-    "logoTitle": "Shadcnblocks.com",
+    "logoAlt": "Payload Workers Template",
+    "logoTitle": "Payload Workers Template",
     "features": {
       "title": "Özellikler",
       "dashboard": {
@@ -45,8 +45,7 @@
         "description": "İhtiyaç duyduğunuzda yardım alın"
       }
     },
-    "products": "Ürünler",
-    "resources": "Kaynaklar",
+    "about": "Hakkında",
     "contact": "İletişim",
     "templates": "Şablonlar",
     "blog": "Blog",
@@ -56,7 +55,7 @@
   },
   "footer": {
     "copyright": "© {year} Tüm hakları saklıdır",
-    "logoTitle": "Shadcnblocks.com",
+    "logoTitle": "Payload Workers Template",
     "logoAlt": "logo",
     "description": "Startup işiniz veya yan projeniz için bir bileşen koleksiyonu.",
     "product": {

@@ -93,13 +93,8 @@ const Navbar5 = () => {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink href="/posts" className={navigationMenuTriggerStyle()}>
-                  {t('products')}
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink href="/pages" className={navigationMenuTriggerStyle()}>
-                  {t('resources')}
+                <NavigationMenuLink href="/about" className={navigationMenuTriggerStyle()}>
+                  {t('about')}
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
@@ -166,14 +161,11 @@ const Navbar5 = () => {
                     </AccordionItem>
                   </Accordion>
                   <div className="flex flex-col gap-6">
+                    <Link href="/about" className="font-medium">
+                      {t('about')}
+                    </Link>
                     <Link href="/contact" className="font-medium">
                       {t('contact')}
-                    </Link>
-                    <Link href="/posts" className="font-medium">
-                      {t('blog')}
-                    </Link>
-                    <Link href="/pages" className="font-medium">
-                      {t('pricing')}
                     </Link>
                   </div>
                   <div className="mt-6 flex flex-col gap-4">
