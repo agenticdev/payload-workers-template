@@ -6,15 +6,40 @@ import {
   ParagraphFeature,
   lexicalEditor,
   UnderlineFeature,
+  StrikethroughFeature,
+  SubscriptFeature,
+  SuperscriptFeature,
+  InlineCodeFeature,
+  HeadingFeature,
+  UnorderedListFeature,
+  OrderedListFeature,
+  ChecklistFeature,
+  IndentFeature,
+  AlignFeature,
+  BlockquoteFeature,
+  UploadFeature,
+  HorizontalRuleFeature,
   type LinkFields,
 } from '@payloadcms/richtext-lexical'
 
 export const defaultLexical = lexicalEditor({
   features: [
     ParagraphFeature(),
-    UnderlineFeature(),
+    HeadingFeature({
+      enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+    }),
     BoldFeature(),
     ItalicFeature(),
+    UnderlineFeature(),
+    StrikethroughFeature(),
+    SubscriptFeature(),
+    SuperscriptFeature(),
+    InlineCodeFeature(),
+    UnorderedListFeature(),
+    OrderedListFeature(),
+    ChecklistFeature(),
+    IndentFeature(),
+    AlignFeature(),
     LinkFeature({
       enabledCollections: ['pages', 'posts'],
       fields: ({ defaultFields }) => {
@@ -43,5 +68,20 @@ export const defaultLexical = lexicalEditor({
         ]
       },
     }),
+    UploadFeature({
+      collections: {
+        media: {
+          fields: [
+            {
+              name: 'caption',
+              type: 'richText',
+              editor: lexicalEditor(),
+            },
+          ],
+        },
+      },
+    }),
+    BlockquoteFeature(),
+    HorizontalRuleFeature(),
   ],
 })
