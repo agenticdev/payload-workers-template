@@ -62,9 +62,9 @@ const Navbar5 = () => {
     <section className="py-4">
       <div className="container">
         <nav className="flex items-center justify-between">
-          <a href="https://www.shadcnblocks.com" className="flex items-center gap-2">
+          <a href="/" className="flex items-center gap-2">
             <img
-              src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg"
+              src="https://asset.cooksa.com/media/logo.svg"
               className="max-h-8"
               alt={t('logoAlt')}
             />
@@ -126,7 +126,7 @@ const Navbar5 = () => {
                   <SheetTitle>
                     <a href="https://www.shadcnblocks.com" className="flex items-center gap-2">
                       <img
-                        src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg"
+                        src="https://asset.cooksa.com/media/logo.svg"
                         className="max-h-8"
                         alt={t('logoAlt')}
                       />
