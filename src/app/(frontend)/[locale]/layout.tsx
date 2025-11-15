@@ -9,6 +9,7 @@ import { Providers } from '@/providers'
 import { LocaleHtmlLang } from '@/components/LocaleHtmlLang'
 import { Navbar5 } from '@/components/Layout/Navbar5'
 import { Footer7 } from '@/components/Layout/Footer7'
+import { Toaster } from 'sonner'
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
@@ -44,6 +45,7 @@ export default async function LocaleLayout({
         <Navbar5 />
         {children}
         <Footer7 />
+        <Toaster position="top-right" />
       </Providers>
     </NextIntlClientProvider>
   )
