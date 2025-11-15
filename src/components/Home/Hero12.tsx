@@ -86,8 +86,8 @@ const Hero12 = () => {
                   )}
                 >
                   <img
-                    src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/react-icon.svg"
-                    alt="React logo"
+                    src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/nextjs-icon.svg"
+                    alt="Next.js logo"
                     className="h-6 saturate-0 transition-all group-hover:saturate-100"
                   />
                 </Link>
