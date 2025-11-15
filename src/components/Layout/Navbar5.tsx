@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { MenuIcon } from 'lucide-react'
+import { Link } from '@/i18n/routing'
 
 import {
   Accordion,
@@ -62,14 +63,14 @@ const Navbar5 = () => {
     <section className="py-4">
       <div className="container">
         <nav className="flex items-center justify-between">
-          <a href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <img
               src="https://asset.cooksa.com/media/logo.svg"
               className="max-h-8"
               alt={t('logoAlt')}
             />
             <span className="text-lg font-semibold tracking-tighter">{t('logoTitle')}</span>
-          </a>
+          </Link>
           <NavigationMenu className="hidden lg:block">
             <NavigationMenuList>
               <NavigationMenuItem>
@@ -92,17 +93,17 @@ const Navbar5 = () => {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink href="#" className={navigationMenuTriggerStyle()}>
+                <NavigationMenuLink href="/posts" className={navigationMenuTriggerStyle()}>
                   {t('products')}
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink href="#" className={navigationMenuTriggerStyle()}>
+                <NavigationMenuLink href="/pages" className={navigationMenuTriggerStyle()}>
                   {t('resources')}
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink href="#" className={navigationMenuTriggerStyle()}>
+                <NavigationMenuLink href="/contact" className={navigationMenuTriggerStyle()}>
                   {t('contact')}
                 </NavigationMenuLink>
               </NavigationMenuItem>
@@ -124,7 +125,7 @@ const Navbar5 = () => {
               <SheetContent side="top" className="max-h-screen overflow-auto">
                 <SheetHeader>
                   <SheetTitle>
-                    <a href="https://www.shadcnblocks.com" className="flex items-center gap-2">
+                    <Link href="/" className="flex items-center gap-2">
                       <img
                         src="https://asset.cooksa.com/media/logo.svg"
                         className="max-h-8"
@@ -133,7 +134,7 @@ const Navbar5 = () => {
                       <span className="text-lg font-semibold tracking-tighter">
                         {t('logoTitle')}
                       </span>
-                    </a>
+                    </Link>
                   </SheetTitle>
                 </SheetHeader>
                 <div className="flex flex-col p-4">
@@ -165,15 +166,15 @@ const Navbar5 = () => {
                     </AccordionItem>
                   </Accordion>
                   <div className="flex flex-col gap-6">
-                    <a href="#" className="font-medium">
-                      {t('templates')}
-                    </a>
-                    <a href="#" className="font-medium">
+                    <Link href="/contact" className="font-medium">
+                      {t('contact')}
+                    </Link>
+                    <Link href="/posts" className="font-medium">
                       {t('blog')}
-                    </a>
-                    <a href="#" className="font-medium">
+                    </Link>
+                    <Link href="/pages" className="font-medium">
                       {t('pricing')}
-                    </a>
+                    </Link>
                   </div>
                   <div className="mt-6 flex flex-col gap-4">
                     <Button variant="outline">{t('signIn')}</Button>

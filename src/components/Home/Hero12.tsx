@@ -1,5 +1,8 @@
+'use client'
+
 import { useTranslations } from 'next-intl'
 import { ExternalLink } from 'lucide-react'
+import { Link } from '@/i18n/routing'
 
 import { cn } from '@/lib/utils'
 
@@ -35,19 +38,21 @@ const Hero12 = () => {
               </p>
             </div>
             <div className="mt-6 flex justify-center gap-3">
-              <Button className="shadow-sm transition-shadow hover:shadow">
-                {t('getStarted')}
+              <Button className="shadow-sm transition-shadow hover:shadow" asChild>
+                <Link href="/contact">{t('getStarted')}</Link>
               </Button>
-              <Button variant="outline" className="group">
-                {t('learnMore')}{' '}
-                <ExternalLink className="ml-2 h-4 transition-transform group-hover:translate-x-0.5" />
+              <Button variant="outline" className="group" asChild>
+                <Link href="/about">
+                  {t('learnMore')}{' '}
+                  <ExternalLink className="ml-2 h-4 transition-transform group-hover:translate-x-0.5" />
+                </Link>
               </Button>
             </div>
             <div className="mt-20 flex flex-col items-center gap-5">
               <p className="text-muted-foreground font-medium lg:text-left">{t('builtWith')}</p>
               <div className="flex flex-wrap items-center justify-center gap-4">
-                <a
-                  href="#"
+                <Link
+                  href="/"
                   className={cn(
                     buttonVariants({ variant: 'outline' }),
                     'group flex aspect-square h-12 items-center justify-center p-0',
@@ -58,9 +63,9 @@ const Hero12 = () => {
                     alt="shadcn/ui logo"
                     className="h-6 saturate-0 transition-all group-hover:saturate-100"
                   />
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  href="/"
                   className={cn(
                     buttonVariants({ variant: 'outline' }),
                     'group flex aspect-square h-12 items-center justify-center p-0',
@@ -71,10 +76,10 @@ const Hero12 = () => {
                     alt="TypeScript logo"
                     className="h-6 saturate-0 transition-all group-hover:saturate-100"
                   />
-                </a>
+                </Link>
 
-                <a
-                  href="#"
+                <Link
+                  href="/"
                   className={cn(
                     buttonVariants({ variant: 'outline' }),
                     'group flex aspect-square h-12 items-center justify-center p-0',
@@ -85,9 +90,9 @@ const Hero12 = () => {
                     alt="React logo"
                     className="h-6 saturate-0 transition-all group-hover:saturate-100"
                   />
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  href="/"
                   className={cn(
                     buttonVariants({ variant: 'outline' }),
                     'group flex aspect-square h-12 items-center justify-center p-0',
@@ -98,7 +103,7 @@ const Hero12 = () => {
                     alt="Tailwind CSS logo"
                     className="h-6 saturate-0 transition-all group-hover:saturate-100"
                   />
-                </a>
+                </Link>
               </div>
             </div>
           </div>

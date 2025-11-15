@@ -16,98 +16,18 @@ export function LanguageSwitcher() {
   const locale = useLocale()
   const router = useRouter()
   const pathname = usePathname()
-  const t = useTranslations()
-
-  const currentLocale = locales.find((l) => l.code === locale)
+  const t = useTranslations('languageSwitcher')
 
   const handleLocaleChange = (newLocale: string) => {
-    // Get the current pathname segments
-    const segments = pathname.split('/').filter(Boolean)
-
-    // Map of slug translations between locales
-    const slugMap: Record<string, Record<string, string>> = {
-      // English to other languages
-      about: {
-        bg: t('slugs.about', { locale: 'bg' }),
-        tr: t('slugs.about', { locale: 'tr' }),
-        en: 'about',
-      },
-      contact: {
-        bg: t('slugs.contact', { locale: 'bg' }),
-        tr: t('slugs.contact', { locale: 'tr' }),
-        en: 'contact',
-      },
-      posts: {
-        bg: t('slugs.posts', { locale: 'bg' }),
-        tr: t('slugs.posts', { locale: 'tr' }),
-        en: 'posts',
-      },
-      pages: {
-        bg: t('slugs.pages', { locale: 'bg' }),
-        tr: t('slugs.pages', { locale: 'tr' }),
-        en: 'pages',
-      },
-      // Bulgarian to other languages
-      'za-nas': {
-        en: 'about',
-        tr: t('slugs.about', { locale: 'tr' }),
-        bg: 'za-nas',
-      },
-      kontakt: {
-        en: 'contact',
-        tr: t('slugs.contact', { locale: 'tr' }),
-        bg: 'kontakt',
-      },
-      publikatsii: {
-        en: 'posts',
-        tr: t('slugs.posts', { locale: 'tr' }),
-        bg: 'publikatsii',
-      },
-      stranitsi: {
-        en: 'pages',
-        tr: t('slugs.pages', { locale: 'tr' }),
-        bg: 'stranitsi',
-      },
-      // Turkish to other languages
-      hakkinda: {
-        en: 'about',
-        bg: t('slugs.about', { locale: 'bg' }),
-        tr: 'hakkinda',
-      },
-      iletisim: {
-        en: 'contact',
-        bg: t('slugs.contact', { locale: 'bg' }),
-        tr: 'iletisim',
-      },
-      gonderiler: {
-        en: 'posts',
-        bg: t('slugs.posts', { locale: 'bg' }),
-        tr: 'gonderiler',
-      },
-      sayfalar: {
-        en: 'pages',
-        bg: t('slugs.pages', { locale: 'bg' }),
-        tr: 'sayfalar',
-      },
-    }
-
-    // Translate each segment to the new locale
-    const translatedSegments = segments.map((segment) => {
-      if (slugMap[segment] && slugMap[segment][newLocale]) {
-        return slugMap[segment][newLocale]
-      }
-      return segment
-    })
-
-    const newPath = translatedSegments.length > 0 ? `/${translatedSegments.join('/')}` : '/'
-
-    router.push(newPath, { locale: newLocale })
+    // The router.push with pathname will automatically handle
+    // the slug translation based on the pathnames config in routing.ts
+    router.push(pathname, { locale: newLocale })
   }
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon" aria-label={t('languageSwitcher.label')}>
+        <Button variant="outline" size="icon" aria-label={t('label')}>
           <Globe className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
