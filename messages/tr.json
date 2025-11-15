@@ -43,5 +43,26 @@
     "account": "Hesap",
     "forgotPassword": "Parolamı unuttum",
     "createAccount": "Hesap oluştur"
+  },
+  "hero": {
+    "title": "Bir sonraki projenizi şununla oluşturun",
+    "titleHighlight": "Bloklar",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Elig doloremque mollitia fugiat omnis! Porro facilis quo animi consequatur. Explicabo.",
+    "getStarted": "Başlayın",
+    "learnMore": "Daha fazla bilgi",
+    "builtWith": "Açık kaynak teknolojileriyle oluşturuldu",
+    "logoAlt": "logo",
+    "backgroundAlt": "arka plan"
+  },
+  "languageSwitcher": {
+    "label": "Dil değiştir",
+    "current": "Mevcut dil: {language}"
+  },
+  "slugs": {
+    "home": "",
+    "about": "hakkinda",
+    "contact": "iletisim",
+    "posts": "gonderiler",
+    "pages": "sayfalar"
   }
 }

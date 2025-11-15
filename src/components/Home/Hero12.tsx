@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl'
 import { ExternalLink } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
@@ -5,11 +6,12 @@ import { cn } from '@/lib/utils'
 import { Button, buttonVariants } from '@/components/ui/button'
 
 const Hero12 = () => {
+  const t = useTranslations('hero')
   return (
     <section className="relative overflow-hidden py-32">
       <div className="absolute inset-x-0 top-0 flex h-full w-full items-center justify-center opacity-100">
         <img
-          alt="background"
+          alt={t('backgroundAlt')}
           src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/patterns/square-alt-grid.svg"
           className="opacity-90 [mask-image:radial-gradient(75%_75%_at_center,white,transparent)]"
         />
@@ -20,30 +22,29 @@ const Hero12 = () => {
             <div className="bg-background/30 rounded-xl p-4 shadow-sm backdrop-blur-sm">
               <img
                 src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg"
-                alt="logo"
+                alt={t('logoAlt')}
                 className="h-16"
               />
             </div>
             <div>
               <h1 className="mb-6 text-pretty text-2xl font-bold tracking-tight lg:text-5xl">
-                Build your next project with <span className="text-primary">Blocks</span>
+                {t('title')} <span className="text-primary">{t('titleHighlight')}</span>
               </h1>
               <p className="text-muted-foreground mx-auto max-w-3xl lg:text-xl">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Elig doloremque mollitia
-                fugiat omnis! Porro facilis quo animi consequatur. Explicabo.
+                {t('description')}
               </p>
             </div>
             <div className="mt-6 flex justify-center gap-3">
-              <Button className="shadow-sm transition-shadow hover:shadow">Get Started</Button>
+              <Button className="shadow-sm transition-shadow hover:shadow">
+                {t('getStarted')}
+              </Button>
               <Button variant="outline" className="group">
-                Learn more{' '}
+                {t('learnMore')}{' '}
                 <ExternalLink className="ml-2 h-4 transition-transform group-hover:translate-x-0.5" />
               </Button>
             </div>
             <div className="mt-20 flex flex-col items-center gap-5">
-              <p className="text-muted-foreground font-medium lg:text-left">
-                Built with open-source technologies
-              </p>
+              <p className="text-muted-foreground font-medium lg:text-left">{t('builtWith')}</p>
               <div className="flex flex-wrap items-center justify-center gap-4">
                 <a
                   href="#"

@@ -43,5 +43,26 @@
     "account": "Account",
     "forgotPassword": "Forgot password",
     "createAccount": "Create account"
+  },
+  "hero": {
+    "title": "Build your next project with",
+    "titleHighlight": "Blocks",
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Elig doloremque mollitia fugiat omnis! Porro facilis quo animi consequatur. Explicabo.",
+    "getStarted": "Get Started",
+    "learnMore": "Learn more",
+    "builtWith": "Built with open-source technologies",
+    "logoAlt": "logo",
+    "backgroundAlt": "background"
+  },
+  "languageSwitcher": {
+    "label": "Change language",
+    "current": "Current language: {language}"
+  },
+  "slugs": {
+    "home": "",
+    "about": "about",
+    "contact": "contact",
+    "posts": "posts",
+    "pages": "pages"
   }
 }
