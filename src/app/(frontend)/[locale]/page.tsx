@@ -1,5 +1,16 @@
-import PageTemplate, { generateMetadata } from './[slug]/page'
+import { Hero12 } from '@/components/Home/Hero12'
 
-export default PageTemplate
+type Args = {
+  params: Promise<{ locale: string; slug?: string }>
+}
 
-export { generateMetadata }
+export default async function Page({ params: paramsPromise }: Args) {
+  const params = await paramsPromise
+  const { locale, slug } = params
+
+  return (
+    <div>
+      <Hero12 />
+    </div>
+  )
+}

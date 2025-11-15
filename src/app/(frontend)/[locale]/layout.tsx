@@ -7,6 +7,8 @@ import { routing } from '@/i18n/routing'
 import { AdminBar } from '@/components/AdminBar'
 import { Providers } from '@/providers'
 import { LocaleHtmlLang } from '@/components/LocaleHtmlLang'
+import { Navbar5 } from '@/components/Layout/Navbar5'
+import { Footer7 } from '@/components/Layout/Footer7'
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
@@ -39,7 +41,9 @@ export default async function LocaleLayout({
             preview: isEnabled,
           }}
         />
+        <Navbar5 />
         {children}
+        <Footer7 />
       </Providers>
     </NextIntlClientProvider>
   )
