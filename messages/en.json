@@ -15,8 +15,81 @@
     "pages": "Pages",
     "categories": "Categories"
   },
+  "navbar": {
+    "logoAlt": "Shadcn UI Navbar",
+    "logoTitle": "Shadcnblocks.com",
+    "features": {
+      "title": "Features",
+      "dashboard": {
+        "title": "Dashboard",
+        "description": "Overview of your activity"
+      },
+      "analytics": {
+        "title": "Analytics",
+        "description": "Track your performance"
+      },
+      "settings": {
+        "title": "Settings",
+        "description": "Configure your preferences"
+      },
+      "integrations": {
+        "title": "Integrations",
+        "description": "Connect with other tools"
+      },
+      "storage": {
+        "title": "Storage",
+        "description": "Manage your files"
+      },
+      "support": {
+        "title": "Support",
+        "description": "Get help when needed"
+      }
+    },
+    "products": "Products",
+    "resources": "Resources",
+    "contact": "Contact",
+    "templates": "Templates",
+    "blog": "Blog",
+    "pricing": "Pricing",
+    "signIn": "Sign in",
+    "startFree": "Start for free"
+  },
   "footer": {
-    "copyright": "© {year} All rights reserved"
+    "copyright": "© {year} All rights reserved",
+    "logoTitle": "Shadcnblocks.com",
+    "logoAlt": "logo",
+    "description": "A collection of components for your startup business or side project.",
+    "product": {
+      "title": "Product",
+      "overview": "Overview",
+      "pricing": "Pricing",
+      "marketplace": "Marketplace",
+      "features": "Features"
+    },
+    "company": {
+      "title": "Company",
+      "about": "About",
+      "team": "Team",
+      "blog": "Blog",
+      "careers": "Careers"
+    },
+    "resources": {
+      "title": "Resources",
+      "help": "Help",
+      "sales": "Sales",
+      "advertise": "Advertise",
+      "privacy": "Privacy"
+    },
+    "legal": {
+      "terms": "Terms and Conditions",
+      "privacy": "Privacy Policy"
+    },
+    "social": {
+      "instagram": "Instagram",
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn"
+    }
   },
   "posts": {
     "title": "Posts",

@@ -15,8 +15,81 @@
     "pages": "Страници",
     "categories": "Категории"
   },
+  "navbar": {
+    "logoAlt": "Shadcn UI Навигация",
+    "logoTitle": "Shadcnblocks.com",
+    "features": {
+      "title": "Функции",
+      "dashboard": {
+        "title": "Табло",
+        "description": "Преглед на вашата активност"
+      },
+      "analytics": {
+        "title": "Анализи",
+        "description": "Проследете вашето представяне"
+      },
+      "settings": {
+        "title": "Настройки",
+        "description": "Конфигурирайте вашите предпочитания"
+      },
+      "integrations": {
+        "title": "Интеграции",
+        "description": "Свържете се с други инструменти"
+      },
+      "storage": {
+        "title": "Хранилище",
+        "description": "Управлявайте вашите файлове"
+      },
+      "support": {
+        "title": "Поддръжка",
+        "description": "Получете помощ когато е необходимо"
+      }
+    },
+    "products": "Продукти",
+    "resources": "Ресурси",
+    "contact": "Контакт",
+    "templates": "Шаблони",
+    "blog": "Блог",
+    "pricing": "Ценообразуване",
+    "signIn": "Вход",
+    "startFree": "Започнете безплатно"
+  },
   "footer": {
-    "copyright": "© {year} Всички права запазени"
+    "copyright": "© {year} Всички права запазени",
+    "logoTitle": "Shadcnblocks.com",
+    "logoAlt": "лого",
+    "description": "Колекция от компоненти за вашия стартъп бизнес или страничен проект.",
+    "product": {
+      "title": "Продукт",
+      "overview": "Преглед",
+      "pricing": "Ценообразуване",
+      "marketplace": "Пазар",
+      "features": "Функции"
+    },
+    "company": {
+      "title": "Компания",
+      "about": "За нас",
+      "team": "Екип",
+      "blog": "Блог",
+      "careers": "Кариери"
+    },
+    "resources": {
+      "title": "Ресурси",
+      "help": "Помощ",
+      "sales": "Продажби",
+      "advertise": "Реклама",
+      "privacy": "Поверителност"
+    },
+    "legal": {
+      "terms": "Общи условия",
+      "privacy": "Политика за поверителност"
+    },
+    "social": {
+      "instagram": "Instagram",
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn"
+    }
   },
   "posts": {
     "title": "Публикации",

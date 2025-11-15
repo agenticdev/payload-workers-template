@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { MenuIcon } from 'lucide-react'
 
 import {
@@ -22,35 +23,37 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/co
 import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 
 const Navbar5 = () => {
+  const t = useTranslations('navbar')
+
   const features = [
     {
-      title: 'Dashboard',
-      description: 'Overview of your activity',
+      title: t('features.dashboard.title'),
+      description: t('features.dashboard.description'),
       href: '#',
     },
     {
-      title: 'Analytics',
-      description: 'Track your performance',
+      title: t('features.analytics.title'),
+      description: t('features.analytics.description'),
       href: '#',
     },
     {
-      title: 'Settings',
-      description: 'Configure your preferences',
+      title: t('features.settings.title'),
+      description: t('features.settings.description'),
       href: '#',
     },
     {
-      title: 'Integrations',
-      description: 'Connect with other tools',
+      title: t('features.integrations.title'),
+      description: t('features.integrations.description'),
       href: '#',
     },
     {
-      title: 'Storage',
-      description: 'Manage your files',
+      title: t('features.storage.title'),
+      description: t('features.storage.description'),
       href: '#',
     },
     {
-      title: 'Support',
-      description: 'Get help when needed',
+      title: t('features.support.title'),
+      description: t('features.support.description'),
       href: '#',
     },
   ]
@@ -63,14 +66,14 @@ const Navbar5 = () => {
             <img
               src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg"
               className="max-h-8"
-              alt="Shadcn UI Navbar"
+              alt={t('logoAlt')}
             />
-            <span className="text-lg font-semibold tracking-tighter">Shadcnblocks.com</span>
+            <span className="text-lg font-semibold tracking-tighter">{t('logoTitle')}</span>
           </a>
           <NavigationMenu className="hidden lg:block">
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Features</NavigationMenuTrigger>
+                <NavigationMenuTrigger>{t('features.title')}</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div className="grid w-[600px] grid-cols-2 p-3">
                     {features.map((feature, index) => (
@@ -90,25 +93,25 @@ const Navbar5 = () => {
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink href="#" className={navigationMenuTriggerStyle()}>
-                  Products
+                  {t('products')}
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink href="#" className={navigationMenuTriggerStyle()}>
-                  Resources
+                  {t('resources')}
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuLink href="#" className={navigationMenuTriggerStyle()}>
-                  Contact
+                  {t('contact')}
                 </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
           <div className="hidden items-center gap-4 lg:flex">
             <LanguageSwitcher />
-            <Button variant="outline">Sign in</Button>
-            <Button>Start for free</Button>
+            <Button variant="outline">{t('signIn')}</Button>
+            <Button>{t('startFree')}</Button>
           </div>
           <div className="flex items-center gap-2 lg:hidden">
             <LanguageSwitcher />
@@ -125,10 +128,10 @@ const Navbar5 = () => {
                       <img
                         src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcnblockscom-icon.svg"
                         className="max-h-8"
-                        alt="Shadcn UI Navbar"
+                        alt={t('logoAlt')}
                       />
                       <span className="text-lg font-semibold tracking-tighter">
-                        Shadcnblocks.com
+                        {t('logoTitle')}
                       </span>
                     </a>
                   </SheetTitle>
@@ -137,7 +140,7 @@ const Navbar5 = () => {
                   <Accordion type="single" collapsible className="mb-2 mt-4">
                     <AccordionItem value="solutions" className="border-none">
                       <AccordionTrigger className="text-base hover:no-underline">
-                        Features
+                        {t('features.title')}
                       </AccordionTrigger>
                       <AccordionContent>
                         <div className="grid md:grid-cols-2">
@@ -163,18 +166,18 @@ const Navbar5 = () => {
                   </Accordion>
                   <div className="flex flex-col gap-6">
                     <a href="#" className="font-medium">
-                      Templates
+                      {t('templates')}
                     </a>
                     <a href="#" className="font-medium">
-                      Blog
+                      {t('blog')}
                     </a>
                     <a href="#" className="font-medium">
-                      Pricing
+                      {t('pricing')}
                     </a>
                   </div>
                   <div className="mt-6 flex flex-col gap-4">
-                    <Button variant="outline">Sign in</Button>
-                    <Button>Start for free</Button>
+                    <Button variant="outline">{t('signIn')}</Button>
+                    <Button>{t('startFree')}</Button>
                   </div>
                 </div>
               </SheetContent>
