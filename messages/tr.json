@@ -136,5 +136,44 @@
     "contact": "iletisim",
     "posts": "gonderiler",
     "pages": "sayfalar"
+  },
+  "aboutPage": {
+    "title": "Hakkımızda",
+    "description": "Payload Workers Template, işletmelerin dijital çağda başarılı olmalarını sağlayan yenilikçi çözümler yaratmaya kendini adamış tutkulu bir ekiptir.",
+    "mainImageAlt": "Ekip işbirliği",
+    "secondaryImageAlt": "Ofis çalışma alanı",
+    "breakout": {
+      "logoAlt": "logo",
+      "title": "Payload Workers Template",
+      "description": "İşletmelere iş akışlarını iyileştirmek, verimliliği artırmak ve büyümeyi teşvik etmek için etkili araçlar sağlıyoruz.",
+      "buttonText": "Daha fazla keşfedin"
+    },
+    "achievements": {
+      "companies": "Şirketler",
+      "projects": "Tamamlanan Projeler",
+      "customers": "Mutlu Müşteriler",
+      "awards": "Tanınan Ödüller"
+    }
+  },
+  "contactPage": {
+    "title": "Bize Ulaşın",
+    "description": "Sorular, geri bildirimler veya işbirliği fırsatları için hazırız. Size nasıl yardımcı olabileceğimizi bize bildirin!",
+    "contactDetails": "İletişim Bilgileri",
+    "phone": "Telefon",
+    "email": "E-posta",
+    "web": "Web",
+    "form": {
+      "firstName": "Ad",
+      "firstNamePlaceholder": "Adınız",
+      "lastName": "Soyad",
+      "lastNamePlaceholder": "Soyadınız",
+      "email": "E-posta",
+      "emailPlaceholder": "E-posta adresiniz",
+      "subject": "Konu",
+      "subjectPlaceholder": "Konu",
+      "message": "Mesaj",
+      "messagePlaceholder": "Mesajınızı buraya yazın.",
+      "submit": "Mesaj Gönder"
+    }
   }
 }

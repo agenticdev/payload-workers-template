@@ -136,5 +136,44 @@
     "contact": "contact",
     "posts": "posts",
     "pages": "pages"
+  },
+  "aboutPage": {
+    "title": "About Us",
+    "description": "Payload Workers Template is a passionate team dedicated to creating innovative solutions that empower businesses to thrive in the digital age.",
+    "mainImageAlt": "Team collaboration",
+    "secondaryImageAlt": "Office workspace",
+    "breakout": {
+      "logoAlt": "logo",
+      "title": "Payload Workers Template",
+      "description": "Providing businesses with effective tools to improve workflows, boost efficiency, and encourage growth.",
+      "buttonText": "Discover more"
+    },
+    "achievements": {
+      "companies": "Companies",
+      "projects": "Projects Finalized",
+      "customers": "Happy Customers",
+      "awards": "Recognized Awards"
+    }
+  },
+  "contactPage": {
+    "title": "Contact Us",
+    "description": "We are available for questions, feedback, or collaboration opportunities. Let us know how we can help!",
+    "contactDetails": "Contact Details",
+    "phone": "Phone",
+    "email": "Email",
+    "web": "Web",
+    "form": {
+      "firstName": "First Name",
+      "firstNamePlaceholder": "First Name",
+      "lastName": "Last Name",
+      "lastNamePlaceholder": "Last Name",
+      "email": "Email",
+      "emailPlaceholder": "Email",
+      "subject": "Subject",
+      "subjectPlaceholder": "Subject",
+      "message": "Message",
+      "messagePlaceholder": "Type your message here.",
+      "submit": "Send Message"
+    }
   }
 }

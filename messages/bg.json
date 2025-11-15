@@ -136,5 +136,44 @@
     "contact": "kontakt",
     "posts": "publikatsii",
     "pages": "stranitsi"
+  },
+  "aboutPage": {
+    "title": "За нас",
+    "description": "Payload Workers Template е страстен екип, посветен на създаването на иновативни решения, които дават възможност на бизнеса да процъфтява в дигиталната ера.",
+    "mainImageAlt": "Екипна колаборация",
+    "secondaryImageAlt": "Офис работно пространство",
+    "breakout": {
+      "logoAlt": "лого",
+      "title": "Payload Workers Template",
+      "description": "Предоставяме на бизнеса ефективни инструменти за подобряване на работните процеси, повишаване на ефективността и насърчаване на растежа.",
+      "buttonText": "Научете повече"
+    },
+    "achievements": {
+      "companies": "Компании",
+      "projects": "Завършени проекти",
+      "customers": "Доволни клиенти",
+      "awards": "Признати награди"
+    }
+  },
+  "contactPage": {
+    "title": "Свържете се с нас",
+    "description": "На разположение сме за въпроси, обратна връзка или възможности за сътрудничество. Уведомете ни как можем да помогнем!",
+    "contactDetails": "Данни за контакт",
+    "phone": "Телефон",
+    "email": "Имейл",
+    "web": "Уебсайт",
+    "form": {
+      "firstName": "Име",
+      "firstNamePlaceholder": "Вашето име",
+      "lastName": "Фамилия",
+      "lastNamePlaceholder": "Вашата фамилия",
+      "email": "Имейл",
+      "emailPlaceholder": "Вашият имейл",
+      "subject": "Тема",
+      "subjectPlaceholder": "Тема",
+      "message": "Съобщение",
+      "messagePlaceholder": "Напишете вашето съобщение тук.",
+      "submit": "Изпрати съобщение"
+    }
   }
 }
